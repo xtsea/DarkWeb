@@ -15,17 +15,17 @@ from pykillerx import *
 async def neofetch(client: Client, message: Message):
     noob = await message.reply_text("`Prossing.....`")
     try:
+        await asyncio.sleep(2)
+        await noob.edit("wait for Installing neofetch")
         error_install = (await shell_exec("sudo apt-get install neofetch -y"))[0]
         if error_install:
-           wtf = await client.send_message(message.chat.id, f"<code>{error_install}</code>")
+           await noob.edit(f"<code>{error_install}</code>")
     except Exception:
         return error_install
     try:
-        await wtf.delete()
         neofetch = (await shell_exec("neofetch --stdout"))[0]
         carbon = await make_carbon(neofetch)
-        await client.send_photo(message.chat.id, carbon)
-        await noob.delete()
+        await noob.reply_photo(carbon)
     except BaseException as e:
         return await noob.edit(f"**ERROR** `{e}`")
 
