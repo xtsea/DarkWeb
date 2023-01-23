@@ -15,11 +15,11 @@ from pykillerx import *
 async def neofetch(client: Client, message: Message):
     noob = await message.reply_text("`Prossing.....`")
     try:
-        error_install = (await shell_exec("sudo apt-get neofetch -y"))[0]
+        error_install = (await shell_exec("sudo apt-get intall neofetch -y"))[0]
         if error_install:
-           await client.send_message(message.chat.id, error_install)
+           await client.send_message(message.chat.id, <code>error_install</code>)
     except Exception:
-        return ""
+        return error_install
     try:
         neofetch = (await shell_exec("neofetch --stdout"))[0]
         carbon = await make_carbon(neofetch)
