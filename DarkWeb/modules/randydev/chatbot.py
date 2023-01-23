@@ -16,7 +16,6 @@ from pykillerx.helper import *
 from pykillerx.help import *
 from pykillerx.helper.tools import *
 from pykillerx import *
-# from pykillerx.config import Var
 
 from config import OPENAI_API
 

@@ -12,7 +12,6 @@ from typing import Optional
 from contextlib import suppress
 from asyncio import sleep
 from io import StringIO
-# from DarkWeb.database.mongodb import cli as database
 from pyrogram.types import *
 from pyrogram import *
 from pyrogram import Client as ren
