@@ -24,7 +24,6 @@ async def neofetch(client: Client, message: Message):
         neofetch = (await shell_exec("neofetch --stdout"))[0]
         carbon = await make_carbon(neofetch)
         await client.send_photo(message.chat.id, carbon)
-        await noob.delete()
     except BaseException as e:
         return await noob.edit(f"**ERROR** `{e}`")
 
