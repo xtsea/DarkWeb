@@ -17,10 +17,11 @@ async def neofetch(client: Client, message: Message):
     try:
         error_install = (await shell_exec("sudo apt-get install neofetch -y"))[0]
         if error_install:
-           await client.send_message(message.chat.id, f"<code>{error_install}</code>")
+           wtf = await client.send_message(message.chat.id, f"<code>{error_install}</code>")
     except Exception:
         return error_install
     try:
+        await wtf.delete()
         neofetch = (await shell_exec("neofetch --stdout"))[0]
         carbon = await make_carbon(neofetch)
         await client.send_photo(message.chat.id, carbon)
