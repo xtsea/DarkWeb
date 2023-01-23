@@ -17,7 +17,7 @@ async def neofetch(client: Client, message: Message):
     try:
         error_install = (await shell_exec("sudo apt-get install neofetch -y"))[0]
         if error_install:
-           await client.send_message(message.chat.id, <code>error_install</code>)
+           await client.send_message(message.chat.id, f"<code>{error_install}</code>")
     except Exception:
         return error_install
     try:
