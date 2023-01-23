@@ -15,7 +15,7 @@ from pykillerx import *
 async def neofetch(client: Client, message: Message):
     noob = await message.reply_text("`Prossing.....`")
     try:
-        error_install = (await shell_exec("sudo apt-get intall neofetch -y"))[0]
+        error_install = (await shell_exec("sudo apt-get install neofetch -y"))[0]
         if error_install:
            await client.send_message(message.chat.id, <code>error_install</code>)
     except Exception:
