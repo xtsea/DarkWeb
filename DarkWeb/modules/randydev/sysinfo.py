@@ -21,11 +21,11 @@ async def neofetch(client: Client, message: Message):
         if error_install:
            await noob.edit(f"<code>{error_install}</code>")
     except Exception:
-        return error_install
+        return
     try:
         neofetch = (await shell_exec("neofetch --stdout"))[0]
         carbon = await make_carbon(neofetch)
-        await noob.reply_photo(carbon)
+        await message.reply_photo(carbon)
     except BaseException as e:
         return await noob.edit(f"**ERROR** `{e}`")
 
