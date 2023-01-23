@@ -16,7 +16,7 @@ from pykillerx.helper.what import *
 from pykillerx.help import *
 from pykillerx.helper.tools import *
 from pykillerx import *
-from pykillerx.config import Var
+# from pykillerx.config import Var
 
 from config import OPENAI_API
 
@@ -28,7 +28,7 @@ async def openai(c, m):
     question = m.text.split(" ", maxsplit=1)[1]
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {Var.OPENAI_API} or {OPENAI_API}",
+        "Authorization": f"Bearer {OPENAI_API}",
     }
 
     json_data = {
