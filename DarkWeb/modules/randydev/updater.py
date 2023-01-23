@@ -322,7 +322,7 @@ async def updatees(client: Client, message: Message):
     else:
         await bash("pip3 install -r requirements.txt")
         restart()
-        exit()
+        sys.exit()
 
 
 add_command_help(
