@@ -1,7 +1,7 @@
 import os
 import sys
 from re import sub
-from time import time
+from time import time as waktu
 import asyncio
 
 from pyrogram import filters, enums
@@ -63,7 +63,7 @@ async def list_admins(client: Client, chat_id: int):
             return admins_in_chat[chat_id]["data"]
 
     admins_in_chat[chat_id] = {
-        "last_updated_at": time(),
+        "last_updated_at": waktu(),
         "data": [
             member.user.id
             async for member in client.get_chat_members(
