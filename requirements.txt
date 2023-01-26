@@ -4,7 +4,7 @@ aiohttp
 asyncio
 bs4
 gitpython
-googlesearch-python== 1.0.1
+googlesearch-python==1.0.1
 gtts
 heroku3
 lottie
