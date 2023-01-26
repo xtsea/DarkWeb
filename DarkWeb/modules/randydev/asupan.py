@@ -10,8 +10,8 @@ from pyrogram.types import *
 from pyrogram import Client as ren 
 from DarkWeb.helper.cmd import *
 from DarkWeb.helper.admin import *
+from DarkWeb.helper.misc import *
 
-from pykillerx.helper.misc import *
 from pykillerx.helper.basic import *
 from pykillerx.helper import *
 from pykillerx.blacklist import *
