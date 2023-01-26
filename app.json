@@ -1,6 +1,6 @@
 {
     "name": "DarkWeb",
-    "description": "DarkWeb modular with pyrogram",
+    "description": "About Another python3 telegram userbot project. Made with pyrogram library",
     "logo": "",
     "keywords": [
     "python3",
@@ -55,6 +55,11 @@
       },
       "HEROKU_APP_NAME": {
         "description": "Your heroku app/bot's name",
+        "value": "",
+        "required": false
+      },
+      "ALIVE_PIC": {
+        "description": "telegraph link jpg",
         "value": "",
         "required": false
       },
