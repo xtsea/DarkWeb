@@ -16,7 +16,7 @@ async def kickdel_cmd(client: Client, message: Message):
     ren = await edit_or_reply(message, "<b>Kicking deleted accounts...</b>")
     values = [
         await message.chat.ban_member(user.user.id, int(time()) + 31)
-        for member in await message.chat.get_members()
+        for member in message.chat.get_members()
         if member.user.is_deleted
     ]
     await ren.edit(f"<b>Successfully kicked {len(values)} deleted account(s)</b>")
