@@ -129,7 +129,7 @@ async def zping(client: Client, message: Message):
     await asyncio.sleep(1.5)
     end = dt.now()
     duration = (end - start).microseconds / 1000
-    await message.lol(
+    await lol.edit(
         f" **Pong !!** "
         f"`%sms` \n"
         f" **Uptime** - "
