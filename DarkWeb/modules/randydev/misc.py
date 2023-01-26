@@ -25,7 +25,7 @@ from pykillerx.help import *
 
 alive_logo = ALIVE_PIC or "https://graph.org/file/38b5b96fc1dd44557720b.jpg"
 
-@ren.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
+@ren.on_message(filters.command(["alive", "awake"], cmd) & filters.via_bot)
 async def alive(client: Client, message: Message):
     user = await client.get_users("me")
     if ALIVE_TEXT:
