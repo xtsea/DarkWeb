@@ -1,6 +1,7 @@
 import os
 from os import getenv
 import asyncio
+import asyncio as tai
 from datetime import datetime
 from datetime import datetime as dt
 from platform import python_version
@@ -32,14 +33,15 @@ async def alive(client: Client, message: Message):
     else:
         txt = (
         f"** 〄 𝐃𝐀𝐑𝐊 𝐖𝐄𝐁 〄**\n\n"
-        f"❏ **ᴠᴇʀsɪᴏɴ**: `{BOT_VER}`\n"
+        f"❏ **full_name**: `{user.first_name}`}\n"
+        f"├•  **premium**: `{user.is_premium}`\n"
+        f"├• **dc_id**: `{user.dc_id}`\n"
+        f"├• **ᴠᴇʀsɪᴏɴ**: `{BOT_VER}`\n"
         f"├• **ᴘʏᴋɪʟʟᴇʀx**: `{killerx}` [`{where_hosted()}`]\n"
         f"├• **ᴜᴘᴛɪᴍᴇ**: `{str(dt.now() - START_TIME).split('.')[0]}`\n"
         f"├• **ᴘʏᴛʜᴏɴ**: `{python_version()}`\n"
         f"├ **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`\n"
-        f"├• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`\n"
-        f"├• **dc_id**: `{user.dc_id}`\n"
-        f"└• **premium**: {user.is_premium}\n"
+        f"└• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`\n"
     )
     xx = await message.reply_text("☠️")
     try:
@@ -49,7 +51,7 @@ async def alive(client: Client, message: Message):
     send = client.send_video if alive_logo.endswith(".mp4") else client.send_photo
     xd = (f"{txt}")
     try:
-        await asyncio.gather(
+        await tai.gather(
             xx.delete(),
             send(
                 message.chat.id,
