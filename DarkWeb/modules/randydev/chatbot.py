@@ -12,11 +12,8 @@ from pyrogram.errors import MessageNotModified
 
 from DarkWeb.helper.cmd import *
 from DarkWeb.helper.what import *
-
 from pykillerx.help import *
-from pykillerx import *
-
-from config import *
+from config import OPENAI_API
 
 OPENAI_API_KEY = OPENAI_API
 
