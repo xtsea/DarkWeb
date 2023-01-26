@@ -53,6 +53,12 @@ add_command_help(
 )
 ```
 
+### Deploy to Heroku [FORK] 
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://deploy-fork-by-randydev.vercel.app/)
+
+```
+https://heroku.com/deploy?template=your_repo_here
+```
 
 ### Tutorial VPS
 ```console
