@@ -12,7 +12,7 @@ prettytable
 psycopg2-binary
 pymediainfo
 pyrogram
-pyromod
+pyromod==1.1.0
 python-dotenv
 pykillerx
 requests
