@@ -22,22 +22,6 @@ from pykillerx import __version__ as killerx
 from pykillerx.extra import *
 from pykillerx.help import *
 
-"""
-if ALIVE_TEXT:
-   txt = ALIVE_TEXT
-else:
-    txt = (
-        f"** 〄 𝐃𝐀𝐑𝐊 𝐖𝐄𝐁 〄**\n\n"
-        f"❏ **ᴠᴇʀsɪᴏɴ**: `{BOT_VER}`\n"
-        f"├• **ᴘʏᴋɪʟʟᴇʀx**: `{killerx}` [`{where_hosted()}`]\n"
-        f"├• **ᴜᴘᴛɪᴍᴇ**: `{str(dt.now() - START_TIME).split('.')[0]}`\n"
-        f"├• **ᴘʏᴛʜᴏɴ**: `{python_version()}`\n"
-        f"├• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`\n"
-        f"├• **dc_id**: {
-        f"└• **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`\n"
-    )
-"""
-
 alive_logo = ALIVE_PIC or "https://graph.org/file/38b5b96fc1dd44557720b.jpg"
 
 @ren.on_message(filters.command(["alive", "awake"], cmd) & filters.me)
@@ -52,16 +36,17 @@ async def alive(client: Client, message: Message):
         f"├• **ᴘʏᴋɪʟʟᴇʀx**: `{killerx}` [`{where_hosted()}`]\n"
         f"├• **ᴜᴘᴛɪᴍᴇ**: `{str(dt.now() - START_TIME).split('.')[0]}`\n"
         f"├• **ᴘʏᴛʜᴏɴ**: `{python_version()}`\n"
+        f"├ **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`\n"
         f"├• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`\n"
         f"├• **dc_id**: `{user.dc_id}`\n"
-        f"└• **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`\n"
+        f"└• **premium**: {user.is_premium}\n"
     )
     xx = await message.reply_text("☠️")
     try:
        await message.delete()
     except:
        pass
-    send = client.send_video if alive_logo.endswith(".mp4") else client.send_photo
+    send = await client.send_video if alive_logo.endswith(".mp4") else await client.send_photo
     xd = (f"{txt}")
     try:
         await asyncio.gather(
