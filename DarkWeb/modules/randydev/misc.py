@@ -33,7 +33,7 @@ async def alive(client: Client, message: Message):
     else:
         txt = (
         f"** 〄 𝐃𝐀𝐑𝐊 𝐖𝐄𝐁 〄**\n\n"
-        f"❏ **full_name**: `{user.first_name}`}\n"
+        f"❏ **full_name**: `{user.first_name}`\n"
         f"├•  **premium**: `{user.is_premium}`\n"
         f"├• **dc_id**: `{user.dc_id}`\n"
         f"├• **ᴠᴇʀsɪᴏɴ**: `{BOT_VER}`\n"
@@ -42,6 +42,7 @@ async def alive(client: Client, message: Message):
         f"├• **ᴘʏᴛʜᴏɴ**: `{python_version()}`\n"
         f"├ **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`\n"
         f"└• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`\n"
+
     )
     xx = await message.reply_text("☠️")
     try:
