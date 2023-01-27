@@ -137,4 +137,6 @@ for client in clients:
     if not hasattr(client, "group_call"):
         setattr(client, "group_call", GroupCallFactory(client).get_group_call())
 
-loop = asyncio.get_event_loop()
+event_policy = asyncio.get_event_loop_policy()
+event_loop = event_policy.get_event_loop()
+asyncio.set_event_loop(event_loop)
