@@ -24,8 +24,8 @@ from pykillerx.help import *
 # LU GABISA CODING LU KONTOL
 # BELAJAR CODING DARI NOL
 
-import DarkWeb.modules.randydev.truth_and_dare_string as truth_and_dare_string
 
+import ..randydev.truth_and_dare_string as truth_and_dare_string
 @ren.on_message(filters.command("dare", cmd) & filters.me)
 async def dare(c, m):
     try:
@@ -33,4 +33,20 @@ async def dare(c, m):
         await pro.edit(f"{random.choice(truth_and_dare_string.DARE)}")
     except Exception:
         pass
+
+@ren.on_message(filters.command("truth", cmd) & filters.me)
+async def dare(c, m):
+    try:
+        pro = await m.reply_text("`Prossing.....`")
+        await pro.edit(f"{random.choice(truth_and_dare_string.TRUTH)}")
+    except Exception:
+        pass
+
+add_command_help(
+    "dare",
+    [
+        [f"dare", "for any other questions"],
+        f"truth", "for any other questions"],
+    ],
+)
         
