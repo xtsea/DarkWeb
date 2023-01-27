@@ -84,12 +84,16 @@ async def evaluation_cmd_t(client, message):
         evaluation = "Success"
 
     final_output = f"""
-    **EVAL**:
-    <pre language="python">{cmd}</pre>
+**EVAL**:
+```python
+{cmd}
+```
 
-    **OUTPUT**:
-    <pre language="python">{evaluation.strip()}</pre>
-    """
+**OUTPUT**:
+```python
+{evaluation.strip()}
+```
+"""
     if len(final_output) > 4096:
         with open("eval.txt", "w+", encoding="utf8") as out_file:
             out_file.write(final_output)
