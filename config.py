@@ -35,7 +35,7 @@ OPENAI_API = getConfig("OPENAI_API")
 CHANNEL = "@RendyProjects"
 SUPPORT = "@pantekyks"
 
-BOT_VER = "0.3.0@dev"
+BOT_VER = "0.3.2@dev"
 BRANCH = getenv("BRANCH", "DarkWeb") #don't change
  
 STRING_SESSION1 = getenv("STRING_SESSION1", "")
