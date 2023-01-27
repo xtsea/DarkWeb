@@ -55,7 +55,7 @@ async def dare2(c, m):
             start_param = "dare",
         )
      )
-     wait_ren = await m.reply_text("`Prossing.....`")
+     wait_ren = await edit_or_reply(m, "`Prossing.....`")
      await asyncio.sleep(1)
      dare_ren = response.updates[1].message_id + 1 
      status = await c.get_messages(chat_id="truthordares_bot", message_ids=dare_ren)
