@@ -49,9 +49,10 @@ async def dare2(c, m):
     kntl = await m.reply_text("`Prossing....`")
     dare = "/dare"
     bot  = "truthordares_bot"
-    await c.send_message(bot, dare)
+    bacot = await c.send_message(bot, dare)
     await asyncio.sleep(2)
     try:
+        await bacot.delete()
         await kntl.delete()
         async for izzotol in c.get_chat_history(bot, limit=1):
             await izzotol.copy(m.chat.id)
