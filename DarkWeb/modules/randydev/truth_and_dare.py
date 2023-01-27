@@ -46,20 +46,16 @@ async def truth(c, m):
 
 @ren.on_message(filters.command("dare2", cmd) & filters.me)
 async def dare2(c, m):
-    await c.unblock_user("truthordares_bot")
-    response = await c.send(
-        raw.functions.messages.StartBot(
-            bot = await c.resolve_peer("truthordares_bot"),
-            peer = await c.resolve_peer("truthordares_bot"),
-            random_id= c.rnd_id(),
-            start_param = "dare",
-        )
-    )
-    wait_ren = await edit_or_reply(m, "`Processing . . .`")
-    await asyncio.sleep(1)
-    dare_ren = response.updates[1].message.id + 1
-    status = await c.get_messages(chat_id="truthordares_bot", message_ids=dare_ren)
-    await wait_ren.edit_text(f"{status.text}")
+    kntl = await m.reply_text("`Prossing....`")
+    dare = "/dare"
+    bot  = "truthordares_bot"
+    await c.send_message(bot, dare)
+    await asyncio.sleep(2)
+    try:
+        await kntl.delete()
+        async for izzotol in c.get_chat_history(bot, limit=1):
+            await izzotol.copy(m.chat.id)
+
 
 add_command_help(
     "dare",
