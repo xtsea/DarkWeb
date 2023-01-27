@@ -20,6 +20,8 @@ from pyrogram.types import *
 from DarkWeb.helper.cmd import *
 from DarkWeb.helper.misc import *
 from pykillerx.help import *
+from pykillerx.helper.tools import *
+from pykillerx.helper.basic import *
 
 # LU GABISA CODING LU KONTOL
 # BELAJAR CODING DARI NOL
@@ -35,12 +37,33 @@ async def dare(c, m):
         pass
 
 @ren.on_message(filters.command("truth", cmd) & filters.me)
-async def dare(c, m):
+async def truth(c, m):
     try:
         pro = await m.reply_text("`Prossing.....`")
         await pro.edit(f"{random.choice(truth_and_dare_string.TRUTH)}")
     except Exception:
         pass
+
+@ren.on_message(filters.command("dare2", cmd) & filters.me)
+async def dare2(c, m):
+   try:
+       await c.send_message("truthordares_bot", "/start")
+    except BaseException:
+        pass
+    await c.unblock_user("truthordares_bot")
+    response = await c.send(
+        raw.runctions.messages.StartBot(
+            bot = await c.resolve_peer("truthordares_bot"),
+            peer = await c.resolve_peer("truthordares_bot"),
+            random_id= c.rnd_id(),
+            start_param = "dare",
+        )
+     )
+     wait_ren = await m.reply_text("`Prossing.....`")
+     await asyncio.sleep(1)
+     dare_ren = response.updates[1].message_id + 1 
+     status = await c.get_messages(chat_id="truthordares_bot", message_ids=dare_ren)
+     await wait.ren.edit_text(f"{status.text}")
 
 add_command_help(
     "dare",
