@@ -99,12 +99,12 @@ async def evaluation_cmd_t(client, message):
         await status_message.edit(final_output, parse_mode=enums.ParseMode.MARKDOWN)
 
 
-async def aexec(code, client, message):
+async def aexec(code, c, m):
     exec(
-        "async def __aexec(client, message): "
+        "async def __aexec(c, m): "
         + "".join(f"\n {l_}" for l_ in code.split("\n"))
     )
-    return await locals()["__aexec"](client, message)
+    return await locals()["__aexec"](c, m)
 
 
 async def shell_exec(code, treat=True):
