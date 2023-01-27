@@ -55,6 +55,8 @@ async def dare2(c, m):
         await kntl.delete()
         async for izzotol in c.get_chat_history(bot, limit=1):
             await izzotol.copy(m.chat.id)
+    except BaseException:
+        pass
 
 
 add_command_help(
