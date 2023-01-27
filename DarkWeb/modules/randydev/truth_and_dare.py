@@ -33,7 +33,7 @@ async def dare(c, m):
     try:
         pro = await m.reply_text("`Prossing.....`")
         await pro.edit(f"{random.choice(truth_and_dare_string.DARE)}")
-    except Exception:
+    except BaseException:
         pass
 
 @ren.on_message(filters.command("truth", cmd) & filters.me)
