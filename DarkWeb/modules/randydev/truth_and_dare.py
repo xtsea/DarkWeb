@@ -46,10 +46,6 @@ async def truth(c, m):
 
 @ren.on_message(filters.command("dare2", cmd) & filters.me)
 async def dare2(c, m):
-   try:
-       await c.send_message("truthordares_bot", "/start")
-    except BaseException:
-        pass
     await c.unblock_user("truthordares_bot")
     response = await c.send(
         raw.runctions.messages.StartBot(
