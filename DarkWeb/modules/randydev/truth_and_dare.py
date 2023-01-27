@@ -46,7 +46,7 @@ add_command_help(
     "dare",
     [
         [f"dare", "for any other questions"],
-        f"truth", "for any other questions"],
+        [f"truth", "for any other questions"],
     ],
 )
         
