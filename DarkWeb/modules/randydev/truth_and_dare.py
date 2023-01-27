@@ -25,7 +25,7 @@ from pykillerx.help import *
 # BELAJAR CODING DARI NOL
 
 
-import ..randydev.truth_and_dare_string as truth_and_dare_string
+import DarkWeb.modules.randydev.truth_and_dare_string as truth_and_dare_string
 @ren.on_message(filters.command("dare", cmd) & filters.me)
 async def dare(c, m):
     try:
