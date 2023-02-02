@@ -20,7 +20,6 @@ from pyrogram import Client as app
 from pyromod import *
 
 from DarkWeb.helper.cmd import *
-from DarkWeb.modules.randydev.carbon import make_carbon
 from DarkWeb.helper.cmd import dont_know as pap_tt
 from DarkWeb.helper.misc import *
 from DarkWeb import *
@@ -32,6 +31,8 @@ from pykillerx.helper.basic import *
 from pykillerx.blacklist import *
 from pykillerx.help import *
 from pykillerx.helper.hacking import *
+
+from pykillerx.carbon import make_carbon
 
 from pyrogram.raw import *
 from pyrogram.raw.types import *
