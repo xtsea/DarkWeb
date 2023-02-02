@@ -14,7 +14,7 @@ pymediainfo
 pyrogram
 pyromod==1.1.0
 python-dotenv
-pykillerx
+pykillerx==0.1.13
 requests
 speedtest-cli==2.1.3
 sqlalchemy==1.3.23
