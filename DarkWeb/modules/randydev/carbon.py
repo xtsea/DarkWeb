@@ -16,13 +16,8 @@ from pykillerx.helper.hacking import *
 from pykillerx.helper import *
 from pykillerx.help import *
 
-async def make_carbon(code):
-    url = "https://carbonara.vercel.app/api/cook"
-    async with aiosession.post(url, json={"code": code}) as resp:
-        image = BytesIO(await resp.read())
-    image.name = "carbon.png"
-    return image
 
+from pykillerx.carbon import make_carbon
 @ren.on_message(filters.command("carbon", cmd) & filters.me)
 async def carbon_func(client: Client, message: Message):
     text = (
