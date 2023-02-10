@@ -1,10 +1,7 @@
-from logging import getLogger
-from os import environ
-
-LOGGER = getLogger(__name__)
-
 try:
-
+    from logging import getLogger
+    from os import environ
+    LOGGER = getLogger(__name__)
     from os import getenv
     import sys
     import os
@@ -29,7 +26,7 @@ GCAST_BLACKLIST = {int(x) for x in getenv("GCAST_BLACKLIST", "").split()}
 
 DB_URL = getenv("DATABASE_URL")
 
-OPENAI_API = getConfig("OPENAI_API")
+OPENAI_API = getenv("OPENAI_API")
 
 # don't kanger repo this !!!
 CHANNEL = "@RendyProjects"
