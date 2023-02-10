@@ -2,6 +2,9 @@
 # copyright 2020 - 2023 : https://github.com/TeamKillerX/
 
 import requests
+import openai
+from io import BytesIO
+from PIL import Image
 import os
 import json
 import random
@@ -44,34 +47,28 @@ async def openai(c, m):
 
 # Credits by @xtsea
 
-@ren.on_message(filters.command("gpti", cmd) & filters.me)
-async def openai_image(c, m):
-    if len(m.command) == 1:
-        return await m.reply(f"use command <code>.{m.command[0]} [question]</code> to generate a random image using the API.")
-    question = m.text.split(" ", maxsplit=1)[1]
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENAI_API}",
-    }
+openai.api_key = OPENAI_API
 
-    prompt = f"generate a random image {question}"
-    
-    json_data = {
-        "engine": "image-alpha-001",
-        "prompt": prompt,
-        "stop": None,
-        "max_tokens": 0,
-        "temperature": 0.5,
-    }
-    msg = await m.reply("Wait a moment looking for your answer..")
-    try:
-        response = (await http.post("https://api.openai.com/v1/completions", headers=headers, json=json_data)).json()
-        image_url = response["choices"][0]["text"].strip()
-        await c.send_photo(m.chat.id, photo=image_url)
-        await msg.delete()
-    except Exception:
-        await msg.edit("Yahh, sorry i can't get your answer.")
+@ren.on_message(filters.command("gpti", cmd) filters.me)
+async def generate_image(c, m):
+    prompt = message.text.split(" ", 1)[1]
 
+    response = openai.Completion.create(
+        engine="davinci",
+        prompt=prompt,
+        max_tokens=2048,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    image_url = response.choices[0].text.strip()
+    image_bytes = BytesIO(requests.get(image_url).content)
+    image = Image.open(image_bytes)
+    image_data = BytesIO()
+    image.save(image_data, format="PNG")
+    image_data.seek(0)
+    await c.send_photo(m.chat.id, photo=image_data)
 
 add_command_help(
     "chatbot",
