@@ -49,7 +49,7 @@ async def openai(c, m):
 
 openai.api_key = OPENAI_API
 
-@ren.on_message(filters.command("gpti", cmd) filters.me)
+@ren.on_message(filters.command("gpti", cmd) & filters.me)
 async def generate_image(c, m):
     prompt = message.text.split(" ", 1)[1]
 
