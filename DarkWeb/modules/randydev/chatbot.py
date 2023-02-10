@@ -47,10 +47,9 @@ async def openai(c, m):
 
 # Credits by @xtsea
 
-OPENAI_API = openai.api_key
 
 def get_gpt_answer(gen_image, question, OPENAI_API):
-    openai.api_key = api_key
+    openai.api_key = OPENAI_API
     if gen_image:
         x = openai.Image.create(
             prompt=question,
