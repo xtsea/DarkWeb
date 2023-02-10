@@ -10,12 +10,11 @@ from pyrogram.types import *
 from pyrogram import Client as ren 
 from pyrogram.errors import MessageNotModified
 
+from DarkWeb import *
 from DarkWeb.helper.cmd import *
 from DarkWeb.helper.what import *
 from pykillerx.help import *
 from config import OPENAI_API
-
-OPENAI_API_KEY = OPENAI_API
 
 @ren.on_message(filters.command("cask", cmd) & filters.user(901878554) & ~filters.me)
 @ren.on_message(filters.command("ask", cmd) & filters.me)
@@ -25,7 +24,7 @@ async def openai(c, m):
     question = m.text.split(" ", maxsplit=1)[1]
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENAI_API_KEY}",
+        "Authorization": f"Bearer {OPENAI_API}",
     }
 
     json_data = {
