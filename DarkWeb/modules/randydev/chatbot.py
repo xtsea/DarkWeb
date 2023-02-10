@@ -52,7 +52,7 @@ openai.api_key = OPENAI_API
 @ren.on_message(filters.command("gpti", cmd) & filters.me)
 async def generate_image(c, m):
     prompt = m.text.split(" ", 1)[1]
-    response = openai.Completion.create(
+    response = openai.api.Completion.create(
         engine="davinci",
         prompt=prompt,
         max_tokens=2048,
