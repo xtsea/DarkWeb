@@ -47,27 +47,47 @@ async def openai(c, m):
 
 # Credits by @xtsea
 
-openai.api_key = OPENAI_API
+OPENAI_API = openai.api_key
+
+def get_gpt_answer(gen_image, question, OPENAI_API):
+    openai.api_key = api_key
+    if gen_image:
+        x = openai.Image.create(
+            prompt=question,
+            n=1,
+            size="1024x1024",
+            user="arc",
+        )
+        return x["data"][0]["url"]
+    x = openai.Completion.create(
+        model="text-davinci-003",
+        prompt=question,
+        temperature=0.5,
+        stop=None,
+        n=1,
+        user="arc",
+        max_tokens=768,
+    )
+    return x["choices"][0].text.strip()
 
 @ren.on_message(filters.command("gpti", cmd) & filters.me)
-async def generate_image(c, m):
-    prompt = m.text.split(" ", 1)[1]
-    response = openai.api.Completion.create(
-        engine="davinci",
-        prompt=prompt,
-        max_tokens=2048,
-        n=1,
-        stop=None,
-        temperature=0.5,
-    )
+async def openai(c, m):
+    if len(m.command) == 1:
+        return await m.reply(f"use command <code>.{m.command[0]} [question]</code> to image generator using the API.")
+    question = m.text.split(" ", maxsplit=1)[1]
 
-    image_url = response.choices[0].text.strip()
-    image_bytes = BytesIO(requests.get(image_url).content)
-    image = Image.open(image_bytes)
-    image_data = BytesIO()
-    image.save(image_data, format="PNG")
-    image_data.seek(0)
-    await c.send_photo(m.chat.id, photo=image_data)
+    prompt = f"generate a random image {question}"
+    
+    msg = await m.reply("Wait a moment looking for your answer..")
+    try:
+        response = await asyncio.to_thread(get_gpt_answer, gen_image, OPENAI_API)
+        image_url = response["choices"][0]["text"].strip()
+        await app.send_photo(m.chat.id, photo=image_url)
+        await msg.delete()
+    except Exception as e:
+        print(e)
+        await msg.edit("Sorry, there was an error generating the image. Please try again later.")
+
 
 add_command_help(
     "chatbot",
