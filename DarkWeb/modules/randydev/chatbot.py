@@ -70,17 +70,17 @@ def get_gpt_answer(gen_image, question, OPENAI_API):
     return x["choices"][0].text.strip()
 
 @ren.on_message(filters.command("gpti", cmd) & filters.me)
-async def openai(c, m):
+async def openai_image(c, m):
     if len(m.command) == 1:
         return await m.reply(f"use command <code>.{m.command[0]} [question]</code> to image generator using the API.")
     question = m.text.split(" ", maxsplit=1)[1]
-
+    gen_image = True
     prompt = f"generate a random image {question}"
-    
+   
     msg = await m.reply("Wait a moment looking for your answer..")
     try:
-        response = await asyncio.to_thread(get_gpt_answer, gen_image, OPENAI_API)
-        image_url = response["choices"][0]["text"].strip()
+        response = await asyncio.to_thread(get_gpt_answer, gen_image, question, OPENAI_API)
+        image_url = response
         await app.send_photo(m.chat.id, photo=image_url)
         await msg.delete()
     except Exception as e:
