@@ -2,7 +2,6 @@
 # copyright 2020 - 2023 : https://github.com/TeamKillerX/
 
 import requests
-import openai
 from io import BytesIO
 from PIL import Image
 import os
@@ -18,6 +17,13 @@ from DarkWeb.helper.cmd import *
 from DarkWeb.helper.what import *
 from pykillerx.help import *
 from config import OPENAI_API
+
+try:
+    import openai
+except ImportError:
+    os.system("pip install -q openai")
+    os.system("pip3 install -q openai")
+    import openai
 
 @ren.on_message(filters.command("cask", cmd) & filters.user(901878554) & ~filters.me)
 @ren.on_message(filters.command("ask", cmd) & filters.me)
@@ -46,7 +52,6 @@ async def openai(c, m):
         await msg.edit("Yahh, sorry i can't get your answer.")
 
 # Credits by @xtsea
-
 
 def get_gpt_answer(gen_image, question, OPENAI_API):
     openai.api_key = OPENAI_API
