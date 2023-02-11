@@ -40,9 +40,9 @@ async def yanto_alive(c: Client, m: Message):
             f"└• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`\n"
 
          )
-           randy_dev = (f"{txt}")
-           yanto_alive = "https://telegra.ph/file/4118da6eaec984162ab0c.jpg"
-           await c.send_photo(m.chat.id, photo=yanto_alive, caption=randy_dev)
+            randy_dev = (f"{txt}")
+            yanto_alive = "https://telegra.ph/file/4118da6eaec984162ab0c.jpg"
+            await c.send_photo(m.chat.id, photo=yanto_alive, caption=randy_dev)
 
     except BaseException:
         pass
