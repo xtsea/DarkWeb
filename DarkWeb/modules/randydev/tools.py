@@ -21,7 +21,6 @@ async def photo_as_sticker(c: Client, m: Message):
        return await m.edit("**Please Reply [image/background]**")
     try:
        if goblok_lu.startswith("-p"):
-          await pro.delete()
           file_name = "downloads/ran.webp"
           upload = await ran.download()
           (await shell_exec("cd downloads && cp *.jpg ran.webp"))[0]
@@ -30,7 +29,6 @@ async def photo_as_sticker(c: Client, m: Message):
           os.remove(upload)
 
        if goblok_lu.startswith("-r"):
-          await pro.delete()
           file_name = "downloads/ran.webp"
           upload = await ran.download()
           (await shell_exec("cd downloads && cp *.png ran.webp"))[0]
