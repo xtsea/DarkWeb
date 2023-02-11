@@ -35,3 +35,5 @@ reportlab
 svglib
 pytgcalls==3.0.0.dev22
 yt_dlp
+numpy
+opencv-python
