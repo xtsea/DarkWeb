@@ -70,6 +70,8 @@ async def photo_as_sticker(c: Client, m: Message):
 async def rmbg_background(c: Client, m: Message):
     api_key = RMBG_API
     photo_id = m.reply_to_message.photo.file_id
+    if not photo_id:
+       return await m.edit("**Please Reply [image]"**")
     temp_file = await c.download_media(photo_id)
 
     endpoint = "https://api.remove.bg/v1.0/removebg"
@@ -82,3 +84,10 @@ async def rmbg_background(c: Client, m: Message):
         shutil.copyfileobj(response.raw, out_file)
     del response
     await m.reply_document("output.png")
+    try:
+       (await shell_exec("cp *.png ran.webp"))[0]
+       await c.send_sticker(m.chat.id, "ran.webp")
+    except BaseException:
+        pass
+    
+       
