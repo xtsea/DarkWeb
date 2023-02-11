@@ -66,7 +66,7 @@ async def alive(client: Client, message: Message):
 @ren.on_message(filters.command("yanto", cmd) & filters.me)
 async def yanto_alive(c: Client, m: Message):
     try:
-       ngewe = get_arg(m)
+        ngewe = get_arg(m)
        if not mantap:
           return await m.edit("¯⁠\⁠_⁠(⁠ツ⁠)⁠_⁠/⁠¯")
 
@@ -86,7 +86,8 @@ async def yanto_alive(c: Client, m: Message):
         ├ **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`
         └• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`
 """
-       await c.send_photo(m.chat.id, photo=yanto_alive, caption=yanto_alive)
+          await c.send_photo(m.chat.id, photo=yanto_alive, caption=yanto_alive)
+
     except BaseException:
         pass
 
