@@ -80,7 +80,7 @@ async def toonify_handler(c: Client, m: Message):
         await pro.edit("`Successfully sent image`")
         await c.send_photo(m.chat.id, result['output_url'])
     else:
-        await m.reply("Failed to toonify the image.")
+        await pro.edit("Failed to toonify the image.")
 
 add_command_help(
     "face",
