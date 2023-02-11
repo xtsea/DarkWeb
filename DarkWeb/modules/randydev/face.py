@@ -15,7 +15,7 @@ from pykillerx.help import *
 
 @ren.on_message(filters.command("facedetect", cmd) & filters.me)
 async def face_detect(c: Client, m: Message):
-    if not message.reply_to_message or not message.reply_to_message.photo:
+    if not m.reply_to_message or not m.reply_to_message.photo:
         await m.reply("Please reply to a photo to detect faces.")
         return
 
