@@ -86,7 +86,7 @@ async def yanto_alive(c: Client, m: Message):
 """
            user = await c.get_users("me")
            yanto_alive = "https://telegra.ph/file/4118da6eaec984162ab0c.jpg"
-           await c.send_photo(m.chat.id, photo=yanto_alive, caption=yanto_alive)
+           await c.send_photo(m.chat.id, photo=yanto_alive, caption=yanto_text)
 
     except BaseException:
         pass
