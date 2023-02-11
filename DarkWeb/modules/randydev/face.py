@@ -56,7 +56,7 @@ async def toonify_handler(c: Client, m: Message):
    
     response = requests.post(url, files={"image": photo_bytes}, headers={"api-key": "4871e0ba-3bb6-40d8-b600-f415877c7606"}) # DON'T THIS STEAL 
     result = response.json()
-    if result["success"]:
+    if "success" in result and result["success"]:
         cartoon_bytes = BytesIO(requests.get(result["output_url"]).content)
         cartoon_img = np.asarray(bytearray(cartoon_bytes.read()), dtype=np.uint8)
         cartoon_img = cv2.imdecode(cartoon_img, cv2.IMREAD_COLOR)
