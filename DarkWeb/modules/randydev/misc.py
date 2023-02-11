@@ -67,13 +67,11 @@ async def alive(client: Client, message: Message):
 async def yanto_alive(c: Client, m: Message):
     try:
         ngewe = get_arg(m)
-       if not mantap:
-          return await m.edit("¯⁠\⁠_⁠(⁠ツ⁠)⁠_⁠/⁠¯")
+        if not mantap:
+           return await m.edit("¯⁠\⁠_⁠(⁠ツ⁠)⁠_⁠/⁠¯")
 
-       if ngewe.startswith("-a"):
-          user = await c.get_users("me")
-          yanto_alive = "https://telegra.ph/file/4118da6eaec984162ab0c.jpg"
-          yanto_text = f"""
+        if ngewe.startswith("-a"):
+           yanto_text = f"""
 
         ** 〄 𝐃𝐀𝐑𝐊 𝐖𝐄𝐁 〄**
         ❏ **full_name**: `{user.first_name}`
@@ -86,7 +84,9 @@ async def yanto_alive(c: Client, m: Message):
         ├ **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`
         └• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`
 """
-          await c.send_photo(m.chat.id, photo=yanto_alive, caption=yanto_alive)
+           user = await c.get_users("me")
+           yanto_alive = "https://telegra.ph/file/4118da6eaec984162ab0c.jpg"
+           await c.send_photo(m.chat.id, photo=yanto_alive, caption=yanto_alive)
 
     except BaseException:
         pass
