@@ -19,6 +19,7 @@ import asyncio
 import cv2
 import numpy as np
 import requests
+import sketchpy
 from io import BytesIO
 from pyrogram import Client as ren
 from pyrogram.types import *
@@ -29,7 +30,7 @@ from pykillerx import *
 from pykillerx.helper import *
 from pykillerx.helper.basic import *
 from pykillerx.help import *
-from sketchpy import library as lib
+
 
 @ren.on_message(filters.command("facedetect", cmd) & filters.me)
 async def face_detect(c: Client, m: Message):
@@ -64,7 +65,7 @@ async def generate_pencil_sketch(c: Client, m: Message):
         file_id = m.reply_to_message.photo
         photo_path = await c.download_media(file_id)
 
-    sketch = lib.draw_sketch_from_path(photo_path)
+    sketch = sketchpy.draw_from_path(photo_path)
     await m.reply_photo(photo=sketch, caption="Here's your pencil sketch! 2")
     os.remove(photo_path)
 
