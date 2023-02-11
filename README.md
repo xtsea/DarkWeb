@@ -16,7 +16,7 @@
 ![Repository Size](https://img.shields.io/github/repo-size/TeamKillerX/DarkWeb?style=for-the-badge&logo=appveyor)
 [![Docker Pulls](https://img.shields.io/docker/pulls/rendyprojects/python)](https://hub.docker.com/r/rendyprojects/python/tags)
 [![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/TeamKillerX/DarkWeb/?ref=repository-badge)
-
+[![DeepSource](https://deepsource.io/gh/TeamKillerX/DarkWeb.svg/?label=active+issues&show_trend=true&token=jw0lCUg_Q5nRQMmfbhyjMLzr)](https://deepsource.io/gh/TeamKillerX/DarkWeb/?ref=repository-badge)
 ## Disclaimer
 ```
 ️                       ⚠️ WARNING FOR YOU ️ ️⚠️
