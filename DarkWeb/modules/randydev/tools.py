@@ -48,7 +48,7 @@ async def photo_as_sticker(c: Client, m: Message):
 async def rmbg_background(c: Client, m: Message):
     api_key = RMBG_API
     photo_id = m.reply_to_message.photo.file_id
-    temp_file = await client.download_media(photo_id)
+    temp_file = await c.download_media(photo_id)
 
     endpoint = "https://api.remove.bg/v1.0/removebg"
     payload = {"size": "auto"}
