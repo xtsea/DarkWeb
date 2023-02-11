@@ -79,8 +79,8 @@ async def generate_sketch(c: Client, m: Message):
         await m.reply_photo(photo=sketch_path, caption="Here's your pencil sketch!")
         os.remove(photo_path)
         os.remove(sketch_path)
-    else:
-        await m.reply_text("Please reply to a message with a photo.")
+#    else:
+#        await m.reply_text("Please reply to a message with a photo.")
 
 
 
