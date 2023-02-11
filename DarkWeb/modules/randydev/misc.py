@@ -40,7 +40,7 @@ async def alive(client: Client, message: Message):
         f"├• **ᴘʏᴋɪʟʟᴇʀx**: `{killerx}` [`{where_hosted()}`]\n"
         f"├• **ᴜᴘᴛɪᴍᴇ**: `{str(dt.now() - START_TIME).split('.')[0]}`\n"
         f"├• **ᴘʏᴛʜᴏɴ**: `{python_version()}`\n"
-        f"├ **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`\n"
+        f"├• **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`\n"
         f"└• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`\n"
 
     )
@@ -62,6 +62,33 @@ async def alive(client: Client, message: Message):
         )
     except BaseException:
         await xx.edit(xd, disable_web_page_preview=True)
+
+@ren.on_message(filters.command("yanto", cmd) & filters.me)
+async def yanto_alive(c: Client, m: Message):
+    try:
+       ngewe = get_arg(m)
+       if not mantap:
+          return await m.edit("¯⁠\⁠_⁠(⁠ツ⁠)⁠_⁠/⁠¯")
+
+       if ngewe.startswith("-a"):
+          user = await c.get_users("me")
+          yanto_alive = "https://telegra.ph/file/4118da6eaec984162ab0c.jpg"
+          yanto_text = f"""
+
+        ** 〄 𝐃𝐀𝐑𝐊 𝐖𝐄𝐁 〄**
+        ❏ **full_name**: `{user.first_name}`
+        ├•  **premium**: `{user.is_premium}`
+        ├• **dc_id**: `{user.dc_id}`
+        ├• **ᴠᴇʀsɪᴏɴ**: `{BOT_VER}`
+        ├• **ᴘʏᴋɪʟʟᴇʀx**: `{killerx}` [`{where_hosted()}`]
+        ├• **ᴜᴘᴛɪᴍᴇ**: `{str(dt.now() - START_TIME).split('.')[0]}`
+        ├• **ᴘʏᴛʜᴏɴ**: `{python_version()}`
+        ├ **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`
+        └• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`
+"""
+        await c.send_photo(m.chat.id, photo=yanto_alive, caption=yanto_alive)
+    except BaseException:
+        pass
 
 @ren.on_message(filters.command("repo", cmd) & filters.me)
 async def repo(bot: Client, message: Message):
