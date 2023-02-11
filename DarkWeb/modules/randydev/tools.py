@@ -70,15 +70,16 @@ async def photo_as_sticker(c: Client, m: Message):
 async def rmbg_background(c: Client, m: Message):
     api_key = RMBG_API
     photo_id = m.reply_to_message.photo.file_id
-    if not photo_id:
-       return await m.edit("**Please Reply [image]**")
     temp_file = await c.download_media(photo_id)
+    if not api_key:
+       return await m.edit("**RMBG_API: missing**")
 
     endpoint = "https://api.remove.bg/v1.0/removebg"
     payload = {"size": "auto"}
 
-    with open(temp_file, "rb") as image_file:
-        response = requests.post(endpoint, data=payload, headers={"X-Api-Key": api_key}, files={"image_file": image_file}, stream=True)
+    if api_key:
+       with open(temp_file, "rb") as image_file:
+          response = requests.post(endpoint, data=payload, headers={"X-Api-Key": api_key}, files={"image_file": image_file}, stream=True)
 
     with open("output.png", "wb") as out_file:
         shutil.copyfileobj(response.raw, out_file)
