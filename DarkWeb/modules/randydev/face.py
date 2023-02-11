@@ -14,8 +14,6 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 # COPYRIGHT https://github.com/TeamKillerX/DarkWeb
 # CREATE CODING BY https://t.me/xtsea
 
-# telegram : https://t.me/xtsea
-
 import os
 import asyncio
 import cv2
@@ -55,7 +53,7 @@ async def face_detect(c: Client, m: Message):
     await pro.edit("`Successfully sent image`")
     await m.reply_photo("output.jpg", caption="Here are the detected faces.")
     try:
-        cleared = "output.png"
+        cleared = "output.jpg"
         os.remove(cleared)
     except BaseException:
         pass
