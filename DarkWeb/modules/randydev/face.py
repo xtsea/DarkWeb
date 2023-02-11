@@ -54,7 +54,7 @@ async def toonify_handler(c: Client, m: Message):
     file_id = m.reply_to_message.photo.file_id
     photo_bytes = await c.download_media(file_id)
    
-    response = requests.post(url, files={"image": photo_bytes}, headers={"api-key": "4871e0ba-3bb6-40d8-b600-f415877c7606") # DON'T THIS STEAL 
+    response = requests.post(url, files={"image": photo_bytes}, headers={"api-key": "4871e0ba-3bb6-40d8-b600-f415877c7606"}) # DON'T THIS STEAL 
     result = response.json()
     if result["success"]:
         cartoon_bytes = BytesIO(requests.get(result["output_url"]).content)
