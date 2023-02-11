@@ -13,7 +13,7 @@ from pykillerx.help import *
 async def photo_as_sticker(c, m):
     try:
         ran = m.reply_to_message
-        file_name = "downloads/ran.jpg"
+        file_name = "downloads/ran.webp"
         upload = await ran.download()
         (await shell_exec("cd downloads && cp *.jpg ran.webp"))[0]
         await c.send_sticker(m.chat.id, file_name)
