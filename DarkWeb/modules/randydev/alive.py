@@ -22,9 +22,7 @@ from config import *
 async def yanto_alive(c: Client, m: Message):
     try:
         user = await c.get_users("me")
-        new_msg = get_arg(m)
-        if new_msg.startswith("-a"):
-           txt = f"""
+        txt = f"""
            ** 〄 𝐃𝐀𝐑𝐊 𝐖𝐄𝐁 〄**
            ❏ **full_name**: `{user.first_name}`
            ├•  **premium**: `{user.is_premium}`
@@ -35,7 +33,9 @@ async def yanto_alive(c: Client, m: Message):
            ├• **ᴘʏᴛʜᴏɴ**: `{python_version()}`
            ├• **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`
            └• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`
-           """
+"""
+        new_msg = get_arg(m)
+        if new_msg.startswith("-a"):
            yanto_alive = "https://telegra.ph/file/4118da6eaec984162ab0c.jpg"
            await c.send_photo(m.chat.id, photo=yanto_alive, caption=txt)
 
