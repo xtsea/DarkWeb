@@ -235,7 +235,7 @@ async def upstream(client: Client, message: Message):
             repo.__del__()
             return
         await status.edit(
-            "`[HEROKU]: KillerXBase Deploy Update is in Progress...`"
+            "`[HEROKU]: DarkWeb Deploy Update is in Progress...`"
         )
         ups_rem.fetch(ac_br)
         repo.git.reset("--hard", "FETCH_HEAD")
@@ -261,9 +261,9 @@ async def upstream(client: Client, message: Message):
             repo.git.reset("--hard", "FETCH_HEAD")
         await updateme_requirements()
         await status.edit(
-            "`KillerXBase Successfully Updated! KillerXBase can be used again.`",
+            "`DarkWeb Successfully Updated! KillerXBase can be used again.`",
         )
-        args = [sys.executable, "-m", "KillerXBase"]
+        args = [sys.executable, "-m", "DarkWeb"]
         execle(sys.executable, *args, environ)
         return
 
