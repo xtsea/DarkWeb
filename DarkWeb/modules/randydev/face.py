@@ -45,7 +45,7 @@ async def face_detect(c: Client, m: Message):
         pass
 
 @ren.on_message(filters.command(["toonify", "cartoon"], cmd) & filters.me)
-async def toonify_handler(client, message):
+async def toonify_handler(c: Client, m: Message):
     url = "https://api.deepai.org/api/toonify"
     if not m.reply_to_message or not m.reply_to_message.photo:
         await m.reply_text("Please reply to a photo to convert to cartoon or comic style.")
