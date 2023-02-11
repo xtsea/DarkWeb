@@ -15,7 +15,7 @@ from pykillerx.help import *
 
 @ren.on_message(filters.command("convert", cmd) & filters.me)
 async def photo_as_sticker(c: Client, m: Message):
-    goblok_lu = m.text.split(" ", 1)[1]
+    goblok_lu = get_arg(m)
     ran = m.reply_to_message
     if not ran and not goblok_lu: 
        return await m.edit("**Please Reply [image/background]**")
