@@ -29,7 +29,7 @@ from pykillerx import *
 from pykillerx.helper import *
 from pykillerx.helper.basic import *
 from pykillerx.help import *
-
+from sketchpy import library as lib
 
 @ren.on_message(filters.command("facedetect", cmd) & filters.me)
 async def face_detect(c: Client, m: Message):
@@ -58,6 +58,15 @@ async def face_detect(c: Client, m: Message):
     except BaseException:
         pass
 
+@ren.on_message(filters.command("sketch", cmd) & filters.me)
+async def generate_pencil_sketch(c, Client, m: Message):
+    if m.reply_to_message.photo:
+        file_id = m.reply_to_message.photo
+        photo_path = await c.download_media(file_id)
+
+    sketch = lib.draw_sketch_from_path(photo_path)
+    await m.reply_photo(photo=sketch, caption="Here's your pencil sketch! 2")
+    os.remove(photo_path)
 
 @ren.on_message(filters.command("pcil", cmd) & filters.me)
 async def generate_sketch(c: Client, m: Message):
@@ -69,7 +78,7 @@ async def generate_sketch(c: Client, m: Message):
         gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         inverted_img = 255 - gray_img
         blurred_img = cv2.GaussianBlur(inverted_img, (21, 21), 0)
-        pencil_sketch = cv2.divide(gray_img, blurred_img, scale=256.0)
+        pencil_sketch = cv2.divide(gray_img, blurred_img, scale=100)
         sketch_path = "pencil_sketch.jpg"
         cv2.imwrite(sketch_path, pencil_sketch)
        
