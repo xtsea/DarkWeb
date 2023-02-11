@@ -21,9 +21,9 @@ from config import *
 @ren.on_message(filters.command("yanto", cmd) & filters.me)
 async def yanto_alive(c: Client, m: Message):
     try:
+        user = await c.get_users("me")
         new_msg = get_arg(m)
         if new_msg.startswith("-a"):
-           user = await c.get_users("me")
            txt = f"""
            ** 〄 𝐃𝐀𝐑𝐊 𝐖𝐄𝐁 〄**
            ❏ **full_name**: `{user.first_name}`
@@ -36,9 +36,8 @@ async def yanto_alive(c: Client, m: Message):
            ├• **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`
            └• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`
            """
-           randy_dev = txt
            yanto_alive = "https://telegra.ph/file/4118da6eaec984162ab0c.jpg"
-           await c.send_photo(m.chat.id, photo=yanto_alive, caption=randy_dev)
+           await c.send_photo(m.chat.id, photo=yanto_alive, caption=txt)
 
     except BaseException:
         pass
