@@ -1,3 +1,19 @@
+"""
+Project [DarkWeb](https://github.com/TeamKillerX/DarkWeb) is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <https://www.gnu.org/licenses/>.
+"""
+
+# COPYRIGHT https://github.com/TeamKillerX/DarkWeb
+# CREATE CODING BY https://t.me/xtsea
+
 # telegram : https://t.me/xtsea
 
 import os
@@ -46,8 +62,10 @@ async def face_detect(c: Client, m: Message):
 
 @ren.on_message(filters.command(["toonify", "cartoon"], cmd) & filters.me)
 async def toonify_handler(c: Client, m: Message):
+    pro = await m.reply_text("`Whacking face cartoon.......`")
+    await asyncio.sleep(5)
     if not m.reply_to_message or not m.reply_to_message.photo:
-        await m.reply_text("Please reply to a photo to convert to cartoon or comic style.")
+        await pro.edit("Please reply to a photo to convert to cartoon or comic style.")
         return
     
     file_id = m.reply_to_message.photo.file_id
@@ -61,6 +79,16 @@ async def toonify_handler(c: Client, m: Message):
         )
     result = response.json()
     if 'output_url' in result:
+        await pro.edit("`Successfully sent image`")
         await c.send_photo(m.chat.id, result['output_url'])
     else:
         await m.reply("Failed to toonify the image.")
+
+add_command_help(
+    "face",
+    [
+        [f"cartoon [reply to image]", "to cartoon image using the deepai api."],
+        [f"toonify [reply to image]", "to toonify image using the deepai api."],
+        [f"facedetect [reply to image]", "to check face detect."],
+    ],
+)
