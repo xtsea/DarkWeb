@@ -69,16 +69,13 @@ async def generate_sketch(c: Client, m: Message):
         gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         inverted_img = 255 - gray_img
         blurred_img = cv2.GaussianBlur(inverted_img, (21, 21), 0)
-        pencil_sketch = cv2.divide(gray_img, blurred_img, scale=256)
+        pencil_sketch = cv2.divide(gray_img, blurred_img, scale=40)
         sketch_path = "pencil_sketch.jpg"
         cv2.imwrite(sketch_path, pencil_sketch)
        
         await m.reply_photo(photo=sketch_path, caption="Here's your pencil sketch!")
         os.remove(photo_path)
         os.remove(sketch_path)
-#    else:
-#        await m.reply_text("Please reply to a message with a photo.")
-
 
 
 
