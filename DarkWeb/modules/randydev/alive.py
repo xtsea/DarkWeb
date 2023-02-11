@@ -23,7 +23,7 @@ async def yanto_alive(c: Client, m: Message):
     try:
         new_msg = get_arg(m)
         if new_msg.startswith("-a"):
-           user = await client.get_users("me")
+           user = await c.get_users("me")
         if ALIVE_TEXT:
            txt = ALIVE_TEXT
         else:
