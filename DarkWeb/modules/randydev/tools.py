@@ -85,8 +85,10 @@ async def rmbg_background(c: Client, m: Message):
     del response
     await m.reply_document("output.png")
     try:
+       clear_file = "ran.webp"
        (await shell_exec("cp *.png ran.webp"))[0]
        await c.send_sticker(m.chat.id, "ran.webp")
+       os.remove(clear_file)
     except BaseException:
         pass
     
