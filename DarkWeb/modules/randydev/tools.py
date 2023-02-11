@@ -10,7 +10,7 @@ from DarkWeb.modules.randydev.dev import shell_exec
 from pykillerx.help import *
 
 @ren.on_message(filters.command("convert", cmd) & filters.me)
-async def photo_as_sticker(c, m):
+async def photo_as_sticker(c, m: Message):
     try:
         goblok_lu = m.text.split(" ", 1)[1]
         ran = m.reply_to_message
