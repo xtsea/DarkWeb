@@ -86,7 +86,7 @@ async def yanto_alive(c: Client, m: Message):
         ├ **ᴘʏʀᴏɢʀᴀᴍ**: `{__version__}`
         └• **ᴍᴏᴅᴜʟᴇs**: `{len(CMD_HELP)}`
 """
-    await c.send_photo(m.chat.id, photo=yanto_alive, caption=yanto_alive)
+       await c.send_photo(m.chat.id, photo=yanto_alive, caption=yanto_alive)
     except BaseException:
         pass
 
