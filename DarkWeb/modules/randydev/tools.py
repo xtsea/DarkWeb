@@ -2,6 +2,8 @@
 # CREATE CODING BY https://t.me/xtsea
 
 import os
+import requests
+import shutil
 from pyrogram import Client as ren
 from pyrogram.types import *
 from pyrogram import *
@@ -12,6 +14,7 @@ from pykillerx import *
 from pykillerx.helper import *
 from pykillerx.helper.basic import *
 from pykillerx.help import *
+from config import RMBG_API
 
 @ren.on_message(filters.command("convert", cmd) & filters.me)
 async def photo_as_sticker(c: Client, m: Message):
@@ -39,3 +42,22 @@ async def photo_as_sticker(c: Client, m: Message):
 
     except BaseException:
         pass
+
+
+@ren.on_message(filters.command("rmbg", cmd) & filters.me)
+async def rmbg_background(c: Client, m: Message):
+    api_key = RMBG_API
+    photo_id = m.reply_to_message.photo.file_id
+    temp_file = await client.download_media(photo_id)
+
+    endpoint = "https://api.remove.bg/v1.0/removebg"
+    payload = {"size": "auto"}
+
+    with open(temp_file, "rb") as image_file:
+        response = requests.post(endpoint, data=payload, headers={"X-Api-Key": api_key}, files={"image_file": image_file}, stream=True)
+
+    with open("output.png", "wb") as out_file:
+        shutil.copyfileobj(response.raw, out_file)
+    del response
+    await m.reply_document("output.png")
+
