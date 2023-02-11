@@ -62,7 +62,7 @@ async def face_detect(c: Client, m: Message):
 @ren.on_message(filters.command("pcil", cmd) & filters.me)
 async def generate_sketch(c: Client, m: Message):
     if m.reply_to_message.photo:
-        file_id = m.reply_to_message.photo[-1].file_id
+        file_id = m.reply_to_message.photo
         photo_path = await c.download_media(file_id)
     
         img = cv2.imread(photo_path)
