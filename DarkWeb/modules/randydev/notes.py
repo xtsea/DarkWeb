@@ -80,7 +80,7 @@ async def save_note(c: Client, m: Message):
                     await edit_or_reply(m.chat.id, f"Message couldn't be forwarded and note couldn't be added.")
                     return
                 msg_id = msg_o.id
-                send_log("#NOTE\nChat ID: %1%2%1\nNote: #%1%3%1\n\nAbove message saved for reply note, please don't delete!", ['`', m.chat.id, keyword]))
+                send_log(f"#NOTE\nChat ID: %1%2%1\nNote: #%1%3%1\n\nAbove message saved for reply note, please don't delete!", ['`', m.chat.id, keyword]))
         else:
             await edit_or_reply(m.chat.id, f"Message couldn't be forwarded and note couldn't be added.")
 
