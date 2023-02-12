@@ -68,10 +68,10 @@ async def photo_as_sticker(c: Client, m: Message):
           await c.send_photo(bot, photo=photo_id)
           await asyncio.sleep(2)
           async for randydev in c.search_messages(bot, limit=1):
-                    if randydev.photo:
-                       downloader_as_photo = await c.download_media(randydev)
-                       await c.send_photo(m.chat.id, downloader_as_photo)
-                       os.remove(downloader_as_photo)
+              if randydev.photo:
+              downloader_as_photo = await c.download_media(randydev)
+              await c.send_photo(m.chat.id, downloader_as_photo)
+              os.remove(downloader_as_photo)
 
     except BaseException:
         pass
