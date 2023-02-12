@@ -14,6 +14,7 @@ from typing import List
 from pyrogram import enums
 from pyrogram.types import Message, User
 from DarkWeb import *
+from config import *
 
 MARKDOWN_FIX_CHAR = '\u2064'
 SPAM_COUNT = [0]
