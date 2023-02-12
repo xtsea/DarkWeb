@@ -37,21 +37,21 @@ notes_init()
 
 # @randydev(pattern='^.notes$')
 @ren.on_message(filters.command("notes", cmd) & filters.me)
-async def notes(message):
+async def notes(c: Client, m: Message):
     try:
         from DarkWeb.database.SQL.notes_sql import get_notes
     except AttributeError:
-        await edit_or_reply(message, f"Running on Non-SQL mode!")
+        await edit_or_reply(m.chat.id, f"Running on Non-SQL mode!")
         return
     reply = f"No notes found in this chat"
-    notesx = get_notes(message.chat.id)
+    notesx = get_notes(m.chat.id)
     for note in notesx:
         if reply == f"No notes found in this chat":
             reply = f"Notes saved in this chat\n"
             reply += '`#{}`\n'.format(note.keyword)
         else:
             reply += '`#{}`\n'.format(note.keyword)
-    await edit_or_reply(message, reply)
+    await edit_or_reply(m.chat.id, reply)
 
 
 @randydev(pattern=r'^.save')
