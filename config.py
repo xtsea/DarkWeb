@@ -25,6 +25,11 @@ GCAST_BLACKLIST = {int(x) for x in getenv("GCAST_BLACKLIST", "").split()}
 
 DB_URL = getenv("DATABASE_URL")
 
+_LOG_ID = environ.get("LOG_ID", None)
+LOG_ID = int(_LOG_ID) if _LOG_ID and resr(r'^-?\d+$', _LOG_ID) else None
+del _LOG_ID
+
+
 RMBG_API = getenv("RMBG_API")
 OPENAI_API = getenv("OPENAI_API")
 REN_LANG = environ.get("REN_LANG", "en")
