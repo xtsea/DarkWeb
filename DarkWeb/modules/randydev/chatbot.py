@@ -17,6 +17,7 @@ from DarkWeb.helper.what import *
 from pykillerx.help import *
 from config import OPENAI_API
 
+from DarkWeb.utils.core import get_translation,
 
 try:
     import openai
@@ -42,7 +43,7 @@ async def openai(c, m):
         "max_tokens": 200,
         "temperature": 0,
     }
-    msg = await m.reply("Wait a moment looking for your answer..")
+    msg = await m.reply(f"{get_translation('waitProsses')})
     try:
         response = (await http.post("https://api.openai.com/v1/completions", headers=headers, json=json_data)).json()
         await msg.edit(response["choices"][0]["text"])
