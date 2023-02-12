@@ -21,6 +21,7 @@ import numpy as np
 import requests
 import sketchpy
 from io import BytesIO
+from PIL import Image
 from pyrogram import Client as ren
 from pyrogram.types import *
 from pyrogram import *
