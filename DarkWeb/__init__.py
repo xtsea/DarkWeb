@@ -59,17 +59,6 @@ LOGS = logging.getLogger(__name__)
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
 
-def get_translation(transKey, params: list = None):
-    ret = _tr.get_translation(REN_LANG, transKey)
-
-    if params and len(params) > 0:
-        for i in reversed(range(len(params))):
-            ret = ret.replace(f'%{i+1}', str(params[i]))
-
-    ret = ret.replace('½', '%')
-
-    return ret
-
 class PyroClient(Client):
     @staticmethod
     def store_msg(_, message):
