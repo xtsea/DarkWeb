@@ -34,7 +34,7 @@ def randydev(**args):
     admin = args.get('admin', False)
 
     if pattern and '.' in pattern[:2]:
-        args['pattern'] = pattern = pattern.replace('.', 1)
+        args['pattern'] = pattern = pattern.replace('.', '^', 1)
 
     if pattern and pattern[-1:] != '$':
         args['pattern'] = pattern = f'{pattern}(?: |$)'
