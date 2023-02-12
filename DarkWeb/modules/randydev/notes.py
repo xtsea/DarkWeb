@@ -85,9 +85,9 @@ async def save_note(c: Client, m: Message):
             await edit_or_reply(m.chat.id, f"Message couldn't be forwarded and note couldn't be added.")
 
     if add_note(str(m.chat.id), keyword, string, msg_id) is False:
-        await edit_or_reply(m.chat.id, f"%1Note successfully added. You can call the note with .call #%2%1", ['`', keyword]))
+        await edit_or_reply(m.chat.id, f"%1Note successfully added. You can call the note with .call #%2%1", ['`', keyword])
     else:
-        await edit_or_reply(m.chat.id, f"%1Note successfully added. You can call the note with .call #%2%1", ['`', keyword]))
+        await edit_or_reply(m.chat.id, f"%1Note successfully added. You can call the note with .call #%2%1", ['`', keyword])
 
 
 @ren.on_message(filters.command("clear", cmd) & filters.me)
@@ -100,9 +100,9 @@ async def clear_note(c: Client, m: Message):
 
     notename = extract_args(m)
     if rm_note(m.chat.id, notename) is False:
-        await edit_or_reply(m.chat.id, f"Note not found!", ['`', notename]))
+        await edit_or_reply(m.chat.id, f"Note not found!", ['`', notename])
     else:
-        await edit_or_reply(m.chat.id, f"%2Note%2 #%1%3%1 %2removed%2", ['**', '`', notename]))
+        await edit_or_reply(m.chat.id, f"%2Note%2 #%1%3%1 %2removed%2", ['**', '`', notename])
 
 
 async def get_note(c: Client, m: Message):
