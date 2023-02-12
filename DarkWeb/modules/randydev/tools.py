@@ -63,14 +63,18 @@ async def photo_as_sticker(c: Client, m: Message):
           os.remove(upload)
 
        if goblok_lu.startswith("-anime"):
+          as_ai = await m.reply_text("`Prossing......`")
           bot = "AnimeAIAlphaBot"
           photo_id = ran.photo.file_id
-          await c.send_photo(bot, photo=photo_id)
-          await asyncio.sleep(20)
+          delete_as_photo = await c.send_photo(bot, photo=photo_id)
+          await asyncio.sleep(15)
           async for randydev in c.search_messages(bot, limit=1):
               if randydev.photo:
                  downloader_as_photo = await c.download_media(randydev)
+                 await as_ai.edit("`Successfully sent image`")
                  await c.send_photo(m.chat.id, downloader_as_photo)
+                 await delete_as_photo.delete()
+                 await randydev.delete()
                  os.remove(downloader_as_photo)
 
     except BaseException:
