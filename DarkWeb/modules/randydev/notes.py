@@ -35,7 +35,6 @@ def notes_init():
 notes_init()
 
 
-# @randydev(pattern='^.notes$')
 @ren.on_message(filters.command("notes", cmd) & filters.me)
 async def notes(c: Client, m: Message):
     try:
@@ -54,20 +53,20 @@ async def notes(c: Client, m: Message):
     await edit_or_reply(m.chat.id, reply)
 
 
-@randydev(pattern=r'^.save')
-def save_note(message):
+@ren.on_message(filters.command("save", cmd) & filters.me)
+async def save_note(c: Client, m: Message):
     try:
         from DarkWeb.database.SQL.notes_sql import add_note
     except AttributeError:
-        edit(message, f'`{get_translation("nonSqlMode")}`')
+        await edit_or_reply(m.chat.id, f"Running on Non-SQL mode!")
         return
-    args = extract_args(message, markdown=True).split(' ', 1)
+    args = extract_args(m, markdown=True).split(' ', 1)
     if len(args) < 1 or len(args[0]) < 1:
-        edit(message, f'`{get_translation("wrongCommand")}`')
+        await edit_or_reply(m.chat.id, f"Command usage is wrong")
         return
     keyword = args[0]
     string = args[1] if len(args) > 1 else ''
-    msg = message.reply_to_message
+    msg = m.reply_to_message
     msg_id = None
 
     if len(string) < 1:
@@ -78,58 +77,58 @@ def save_note(message):
                 string = None
                 msg_o = forward(msg, LOG_ID)
                 if not msg_o:
-                    edit(message, f'`{get_translation("noteError")}`')
+                    await edit_or_reply(m.chat.id, f"Message couldn't be forwarded and note couldn't be added.")
                     return
                 msg_id = msg_o.id
-                send_log(get_translation('notesLog', ['`', message.chat.id, keyword]))
+                send_log("#NOTE\nChat ID: %1%2%1\nNote: #%1%3%1\n\nAbove message saved for reply note, please don't delete!", ['`', m.chat.id, keyword]))
         else:
-            edit(message, f'`{get_translation("wrongCommand")}`')
+            await edit_or_reply(m.chat.id, f"Message couldn't be forwarded and note couldn't be added.")
 
-    if add_note(str(message.chat.id), keyword, string, msg_id) is False:
-        edit(message, get_translation('notesUpdated', ['`', keyword]))
+    if add_note(str(m.chat.id), keyword, string, msg_id) is False:
+        await edit_or_reply(m.chat.id, f"%1Note successfully added. You can call the note with .call #%2%1", ['`', keyword]))
     else:
-        edit(message, get_translation('notesAdded', ['`', keyword]))
+        await edit_or_reply(m.chat.id, f"%1Note successfully added. You can call the note with .call #%2%1", ['`', keyword]))
 
 
-@randydev(pattern=r'^.clear')
-def clear_note(message):
+@ren.on_message(filters.command("clear", cmd) & filters.me)
+async def clear_note(c: Client, m: Message):
     try:
         from DarkWeb.sql.notes_sql import rm_note
     except AttributeError:
-        edit(message, f'`{get_translation("nonSqlMode")}`')
+        edit(message, f"Running on Non-SQL mode!")
         return
 
-    notename = extract_args(message)
-    if rm_note(message.chat.id, notename) is False:
-        edit(message, get_translation('notesNotFound', ['`', notename]))
+    notename = extract_args(m)
+    if rm_note(m.chat.id, notename) is False:
+        await edit_or_reply(m.chat.id, f"Note not found!", ['`', notename]))
     else:
-        edit(message, get_translation('notesRemoved', ['**', '`', notename]))
+        await edit_or_reply(m.chat.id, f"%2Note%2 #%1%3%1 %2removed%2", ['**', '`', notename]))
 
 
-def get_note(message):
+async def get_note(c: Client, m: Message):
     try:
         try:
             from DarkWeb.databass.SQL.notes_sql import get_note
         except BaseException:
-            edit(message, f'`{get_translation("nonSqlMode")}`')
+            await edit_or_reply(m.chat.id, f"Running on Non-SQL mode!")
             return
 
-        notename = extract_args(message).split()[0][1:]
-        note = get_note(message.chat.id, notename)
+        notename = extract_args(m).split()[0][1:]
+        note = get_note(m.chat.id, notename)
 
         if note:
             if note.f_mesg_id:
                 msg_o = get_messages(LOG_ID, msg_ids=int(note.f_mesg_id))
                 if msg_o and len(msg_o) > 0 and not msg_o[-1].empty:
                     msg = msg_o[-1]
-                    reply_msg(message, msg)
+                    reply_msg(m, msg)
                 else:
-                    edit(message, f'`{get_translation("noteResult")}`')
+                    await edit_or_reply(m.chat.id, f"Note result not found!")
             elif note.reply and len(note.reply) > 0:
                 edit(message, note.reply)
             else:
-                edit(message, f'`{get_translation("noteError2")}`')
+                await edit_or_reply(m.chat.id, f"There was a problem fetching the note!")
         else:
-            edit(message, f'`{get_translation("noteNoFound")}`')
+            await edit_or_reply(m.chat.id, f"Note not found!")
     except BaseException:
         pass
