@@ -62,14 +62,12 @@ async def face_detect(c: Client, m: Message):
 @ren.on_message(filters.command("pcil", cmd) & filters.me)
 async def generate_sketch(c: Client, m: Message):
     pro = await m.reply_text("`Whacking pencil face.......`")
-    await asyncio.sleep(5)
-    if not m.reply_to_message or not m.reply_to_message.photo:
+    if not m.reply_to_message.photo:
         await pro.edit("Please reply to a photo to pencil faces.")
         return
-        
-        if m.reply_to_message.photo:
-          file_id = m.reply_to_message.photo
-          photo_path = await c.download_media(file_id)
+  
+        file_id = m.reply_to_message.photo
+        photo_path = await c.download_media(file_id)
     
         img = cv2.imread(photo_path)
         gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
