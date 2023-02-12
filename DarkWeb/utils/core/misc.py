@@ -17,7 +17,6 @@ from DarkWeb import *
 
 MARKDOWN_FIX_CHAR = '\u2064'
 SPAM_COUNT = [0]
-_parsed_prefix = escape(BOT_PREFIX) if BOT_PREFIX else r'\.'
 _admin_status_list = [
     enums.ChatMemberStatus.OWNER,
     enums.ChatMemberStatus.ADMINISTRATOR,
