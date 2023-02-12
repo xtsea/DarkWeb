@@ -18,6 +18,8 @@ class Note(BASE):
 
 engine = create_engine(DB_URL)
 Session = sessionmaker(bind=engine)
+SESSION = Session()
+BASE.metadata.create_all(engine)
 
 def add_note(chat_id, keyword, text):
     with SESSION as session:
