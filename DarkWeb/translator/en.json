@@ -659,4 +659,5 @@
     "zombiesRemove": "Removing deleted account(s)\u2026",
     "zombiesResult": "%1Removed%1 %2%3%2 %1deleted account(s).%1",
     "zombiesResult2": "%1Removed%1 %2%3%2 %1deleted account(s).%1\n%2%4%2 %1deleted admin account are not removed.%1"
+    "waitProsses": "Wait a moment looking for your answer.."
 }
