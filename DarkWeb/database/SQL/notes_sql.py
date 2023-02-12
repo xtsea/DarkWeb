@@ -4,6 +4,7 @@ except ImportError:
     raise AttributeError
 
 from sqlalchemy import Column, String
+from sqlalchemy import Integer
 
 class Note(BASE):
     __tablename__ = "notes"
