@@ -93,7 +93,7 @@ async def save_note(c: Client, m: Message):
 @ren.on_message(filters.command("clear", cmd) & filters.me)
 async def clear_note(c: Client, m: Message):
     try:
-        from DarkWeb.sql.notes_sql import rm_note
+        from DarkWeb.database.SQL.notes_sql import rm_note
     except AttributeError:
         edit(message, f"Running on Non-SQL mode!")
         return
