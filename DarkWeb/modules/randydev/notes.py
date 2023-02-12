@@ -37,7 +37,7 @@ notes_init()
 
 # @randydev(pattern='^.notes$')
 @ren.on_message(filters.command("notes", cmd) & filters.me)
-def notes(message):
+async def notes(message):
     try:
         from DarkWeb.database.SQL.notes_sql import get_notes
     except AttributeError:
