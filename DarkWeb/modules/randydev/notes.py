@@ -14,7 +14,6 @@ from DarkWeb.utils.core import (
     extract_args,
     forward,
     get_messages,
-    get_translation,
     reply_msg,
     randydev,
     send_log,
@@ -28,7 +27,7 @@ def notes_init():
         sql = import_module('DarkWeb.database.SQL.notes_sql')
     except Exception as e:
         sql = None
-        LOGS.warn(get_translation('notesSqlLog'))
+        LOGS.warn("Warning database SQL")
         raise e
 
 
