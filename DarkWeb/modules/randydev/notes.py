@@ -1,6 +1,7 @@
 # Copyright (C) 2020-2022 TeamDerUntergang <https://github.com/TeamDerUntergang>
 
 from pyrogram.types import * 
+from pyrogram imporr Client as ren
 from DarkWeb.helper.cmd import *
 from pykillerx import *
 from pykillerx.helper import *
@@ -34,22 +35,23 @@ def notes_init():
 notes_init()
 
 
-@randydev(pattern='^.notes$')
+# @randydev(pattern='^.notes$')
+@ren.on_message(filters.command("notes", cmd) & filters.me)
 def notes(message):
     try:
         from DarkWeb.database.SQL.notes_sql import get_notes
     except AttributeError:
-        edit(message, f'`{get_translation("nonSqlMode")}`')
+        await edit_or_reply(message, f"Running on Non-SQL mode!")
         return
-    reply = f'`{get_translation("noNote")}`'
+    reply = f"No notes found in this chat"
     notesx = get_notes(message.chat.id)
     for note in notesx:
-        if reply == f'`{get_translation("noNote")}`':
-            reply = f'{get_translation("notesChats")}\n'
+        if reply == f"No notes found in this chat":
+            reply = f"Notes saved in this chat\n"
             reply += '`#{}`\n'.format(note.keyword)
         else:
             reply += '`#{}`\n'.format(note.keyword)
-    edit(message, reply)
+    await edit_or_reply(message, reply)
 
 
 @randydev(pattern=r'^.save')
