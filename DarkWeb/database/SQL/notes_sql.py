@@ -3,39 +3,62 @@ try:
 except ImportError:
     raise AttributeError
 
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, Numeric, String, UnicodeText
 
-class Note(BASE):
+
+class Notes(BASE):
     __tablename__ = "notes"
-    id = Column(Integer, primary_key=True)
-    chat_id = Column(String(14))
-    keyword = Column(String(128))
-    text = Column(Text)
+    chat_id = Column(String(14), primary_key=True)
+    keyword = Column(UnicodeText, primary_key=True, nullable=False)
+    reply = Column(UnicodeText)
+    f_mesg_id = Column(Numeric)
 
-    def __init__(self, chat_id, keyword, text):
-        self.chat_id = chat_id
+    def __init__(self, chat_id, keyword, reply, f_mesg_id):
+        self.chat_id = str(chat_id)
         self.keyword = keyword
-        self.text = text
+        self.reply = reply
+        self.f_mesg_id = f_mesg_id
 
-Note.__table__.create(checkfirst=True)
 
-def add_note(chat_id, keyword, text):
-    new_note = Note(chat_id, keyword, text)
-    SESSION.add(new_note)
-    SESSION.commit()
+Notes.__table__.create(checkfirst=True)
 
-def get_note_text(chat_id, keyword):
-    note = SESSION.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
-    if note:
-       return note.text
+
+def get_note(chat_id, keyword):
+    try:
+        return SESSION.query(Notes).get((str(chat_id), keyword))
+    finally:
+        SESSION.close()
+
+
+def get_notes(chat_id):
+    try:
+        return SESSION.query(Notes).filter(Notes.chat_id == str(chat_id)).all()
+    finally:
+        SESSION.close()
+
+
+def add_note(chat_id, keyword, reply, f_mesg_id):
+    to_check = get_note(chat_id, keyword)
+    if not to_check:
+        adder = Notes(str(chat_id), keyword, reply, f_mesg_id)
+        SESSION.add(adder)
+        SESSION.commit()
+        return True
     else:
-        return None
-
-def delete_note(chat_id, keyword):
-    note = SESSION.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
-    if note:
-       SESSION.delete(note)
-       SESSION.commit()
-       return True
-    else:
+        rem = SESSION.query(Notes).get((str(chat_id), keyword))
+        SESSION.delete(rem)
+        SESSION.commit()
+        adder = Notes(str(chat_id), keyword, reply, f_mesg_id)
+        SESSION.add(adder)
+        SESSION.commit()
         return False
+
+
+def rm_note(chat_id, keyword):
+    to_check = get_note(chat_id, keyword)
+    if not to_check:
+        return False
+    else:
+        SESSION.delete(to_check)
+        SESSION.commit()
+        return True
