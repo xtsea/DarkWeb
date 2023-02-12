@@ -1,7 +1,7 @@
 # Copyright (C) 2020-2022 TeamDerUntergang <https://github.com/TeamDerUntergang>
 
 from pyrogram.types import * 
-from pyrogram imporr Client as ren
+from pyrogram import Client as ren
 from DarkWeb.helper.cmd import *
 from pykillerx import *
 from pykillerx.helper import *
