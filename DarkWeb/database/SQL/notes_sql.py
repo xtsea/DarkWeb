@@ -16,8 +16,8 @@ class Note(BASE):
         self.keyword = keyword
         self.text = text
 
-engine = create_engine(DB_URL)
-SESSION = sessionmaker(bind=engine)
+Session = sessionmaker(bind=engine)
+SESSION = Session()
 
 def add_note(chat_id, keyword, text):
     with SESSION as session:
