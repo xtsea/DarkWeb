@@ -61,7 +61,6 @@ async def face_detect(c: Client, m: Message):
 
 @ren.on_message(filters.command("pcil", cmd) & filters.me)
 async def generate_sketch(c: Client, m: Message):
-    pro = await m.reply_text("`Whacking pencil face.......`")
     if not m.reply_to_message.photo:
         await pro.edit("Please reply to a photo to pencil faces.")
         return
@@ -78,7 +77,6 @@ async def generate_sketch(c: Client, m: Message):
         cv2.imwrite(sketch_path, pencil_sketch)
 
         await m.reply_photo(photo=sketch_path, caption="Here's your pencil sketch!")
-        await pro.delete()
         os.remove(photo_path)
         os.remove(sketch_path)
 
