@@ -1,8 +1,9 @@
+try:
+    from DarkWeb.database.SQL import BASE, SESSION
+except ImportError:
+    raise AttributeError
+
 from sqlalchemy import Column, Integer, String, Text
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
-from DarkWeb.database.SQL import BASE, SESSION
-from config import DB_URL
 
 class Note(BASE):
     __tablename__ = "notes"
@@ -16,31 +17,25 @@ class Note(BASE):
         self.keyword = keyword
         self.text = text
 
-engine = create_engine(DB_URL)
-Session = sessionmaker(bind=engine)
-SESSION = Session()
-BASE.metadata.create_all(engine)
+Note.__table__.create(checkfirst=True)
 
 def add_note(chat_id, keyword, text):
-    with SESSION as session:
-        new_note = Note(chat_id, keyword, text)
-        session.add(new_note)
-        session.commit()
+    new_note = Note(chat_id, keyword, text)
+    SESSION.add(new_note)
+    SESSION.commit()
 
 def get_note_text(chat_id, keyword):
-    with SESSION as session:
-        note = session.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
-        if note:
-            return note.text
-        else:
-            return None
+    note = session.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
+    if note:
+       return note.text
+    else:
+        return None
 
 def delete_note(chat_id, keyword):
-    with SESSION as session:
-        note = session.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
-        if note:
-            session.delete(note)
-            session.commit()
-            return True
-        else:
-            return False
+    note = session.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
+    if note:
+       SESSION.delete(note)
+       SESSION.commit()
+       return True
+    else:
+        return False
