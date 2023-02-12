@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
 from DarkWeb.database.SQL import BASE, SESSION
-from config import DB_URI
+from config import DB_URL
 
 class Note(BASE):
     __tablename__ = "notes"
@@ -16,7 +16,7 @@ class Note(BASE):
         self.keyword = keyword
         self.text = text
 
-engine = create_engine(DB_URI)
+engine = create_engine(DB_URL)
 SESSION = sessionmaker(bind=engine)
 
 def add_note(chat_id, keyword, text):
