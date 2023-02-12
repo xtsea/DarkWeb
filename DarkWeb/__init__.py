@@ -21,6 +21,7 @@ import time
 from aiohttp import ClientSession
 from pytgcalls import GroupCallFactory
 from config import *
+import DarkWeb.translator as _tr
 
 StartTime = time.time()
 START_TIME = dt.now()
@@ -56,6 +57,18 @@ LOGS = logging.getLogger(__name__)
 
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
+
+def get_translation(transKey, params: list = None):
+    ret = _tr.get_translation(REN_LANG, transKey)
+
+    if params and len(params) > 0:
+        for i in reversed(range(len(params))):
+            ret = ret.replace(f'%{i+1}', str(params[i]))
+
+    ret = ret.replace('½', '%')
+
+    return ret
+
 
 if API_ID:
    API_ID = API_ID
