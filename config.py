@@ -9,6 +9,7 @@ try:
     from base64 import b64decode as who
     from pykillerx.helper import *
     from pykillerx.config import *
+    from distutils.util import strtobool as sb
     load_dotenv("config.env", override=True)
 except:
     print("not installed pykillerx")
@@ -29,6 +30,7 @@ _LOG_ID = environ.get("LOG_ID", None)
 LOG_ID = int(_LOG_ID) if _LOG_ID and resr(r'^-?\d+$', _LOG_ID) else None
 del _LOG_ID
 
+LOG_VERBOSE = sb(environ.get('LOG_VERBOSE', 'False'))
 
 RMBG_API = getenv("RMBG_API")
 OPENAI_API = getenv("OPENAI_API")
