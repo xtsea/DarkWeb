@@ -19,7 +19,6 @@ import asyncio
 import cv2
 import numpy as np
 import requests
-import sketchpy
 from io import BytesIO
 from PIL import Image
 from pyrogram import Client as ren
@@ -60,27 +59,14 @@ async def face_detect(c: Client, m: Message):
     except BaseException:
         pass
 
-@ren.on_message(filters.command("sketch", cmd) & filters.me)
-async def generate_pencil_sketch(c: Client, m: Message):
-    if m.reply_to_message.photo:
-        file_id = m.reply_to_message.photo
-        photo_path = await c.download_media(file_id)
-
-    sketch_path = sketchpy.canvas.sketch_from_image(photo_path)
-    sketch_path.draw(threshold = 127)
-    sketch = sketchpy.canvas.sketch_from_svg(sketch_path)
-    sketch.load_svg()
-    image = sketch.to_image()
-    image_path = "sketch.jpg"
-    image.save(image_path)
-    await c.send_photo(m.chat.id, photo=image_path)
-    os.remove(photo_path)
-    os.remove(sketch_path)
-    os.remove(image_path)
-
 @ren.on_message(filters.command("pcil", cmd) & filters.me)
 async def generate_sketch(c: Client, m: Message):
-    if m.reply_to_message.photo:
+    pro = await m.reply_text("`Whacking pencil face.......`")
+    await asyncio.sleep(5)
+    if not m.reply_to_message or not m.reply_to_message.photo:
+        await pro.edit("Please reply to a photo to pencil faces.")
+        return
+
         file_id = m.reply_to_message.photo
         photo_path = await c.download_media(file_id)
     
@@ -88,10 +74,11 @@ async def generate_sketch(c: Client, m: Message):
         gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         inverted_img = 255 - gray_img
         blurred_img = cv2.GaussianBlur(inverted_img, (21, 21), 0)
-        pencil_sketch = cv2.divide(gray_img, blurred_img, scale=100)
+        pencil_sketch = cv2.divide(gray_img, blurred_img, scale=80)
         sketch_path = "pencil_sketch.jpg"
         cv2.imwrite(sketch_path, pencil_sketch)
-       
+
+        await pro.edit("`Successfully sent image`")
         await m.reply_photo(photo=sketch_path, caption="Here's your pencil sketch!")
         os.remove(photo_path)
         os.remove(sketch_path)
