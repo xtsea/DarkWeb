@@ -66,13 +66,14 @@ async def generate_pencil_sketch(c: Client, m: Message):
         file_id = m.reply_to_message.photo
         photo_path = await c.download_media(file_id)
 
-    sketch_path = sketchpy.draw_from_path(photo_path)
+    sketch_path = sketchpy.canvas.sketch_from_image(photo_path)
+    sketch_path.draw(threshold = 127)
     sketch = sketchpy.canvas.sketch_from_svg(sketch_path)
     sketch.load_svg()
     image = sketch.to_image()
     image_path = "sketch.jpg"
     image.save(image_path)
-    await client.send_photo(m.chat.id, photo=image_path)
+    await c.send_photo(m.chat.id, photo=image_path)
     os.remove(photo_path)
     os.remove(sketch_path)
     os.remove(image_path)
