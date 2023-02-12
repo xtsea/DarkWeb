@@ -13,7 +13,7 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 from DarkWeb.database.SQL.notes_sql import *
 from pyrogram import Client as ren 
-from pyrogram import types import *
+from pyrogram.types import * 
 from DarkWeb.helper.cmd import *
 from pykillerx import *
 from pykillerx.helper import *
