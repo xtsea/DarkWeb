@@ -19,6 +19,26 @@ from pyrogram.raw.types import MessageActionContactSignUp
 from DarkWeb import *
 from pykillerx.blacklist import *
 
+def randydev(**args):
+    pattern = args.get('pattern', None)
+    outgoing = args.get('outgoing', True)
+    incoming = args.get('incoming', False)
+    disable_edited = args.get('disable_edited', False)
+    disable_notify = args.get('disable_notify', False)
+    compat = args.get('compat', True)
+    brain = args.get('brain', False)
+    private = args.get('private', True)
+    group = args.get('group', True)
+    bot = args.get('bot', True)
+    service = args.get('service', False)
+    admin = args.get('admin', False)
+
+    if pattern and '.' in pattern[:2]:
+        args['pattern'] = pattern = pattern.replace('.', _parsed_prefix, 1)
+
+    if pattern and pattern[-1:] != '$':
+        args['pattern'] = pattern = f'{pattern}(?: |$)'
+
     def msg_decorator(func):
         def wrap(client, message):
             if message.empty or not message.from_user:
