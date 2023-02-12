@@ -66,9 +66,10 @@ async def generate_sketch(c: Client, m: Message):
     if not m.reply_to_message or not m.reply_to_message.photo:
         await pro.edit("Please reply to a photo to pencil faces.")
         return
-
-        file_id = m.reply_to_message.photo
-        photo_path = await c.download_media(file_id)
+        
+        if m.reply_to_message.photo:
+          file_id = m.reply_to_message.photo
+          photo_path = await c.download_media(file_id)
     
         img = cv2.imread(photo_path)
         gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -78,8 +79,8 @@ async def generate_sketch(c: Client, m: Message):
         sketch_path = "pencil_sketch.jpg"
         cv2.imwrite(sketch_path, pencil_sketch)
 
-        await pro.edit("`Successfully sent image`")
         await m.reply_photo(photo=sketch_path, caption="Here's your pencil sketch!")
+        await pro.delete()
         os.remove(photo_path)
         os.remove(sketch_path)
 
