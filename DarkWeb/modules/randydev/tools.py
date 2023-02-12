@@ -65,10 +65,10 @@ async def photo_as_sticker(c: Client, m: Message):
        if goblok_lu.startswith("-anime"):
           as_ai = await m.reply_text("`Prossing......`")
           bot = "AnimeAIAlphaBot"
-          photo_id = ran.photo.file_id
-          if not ran or not photo_id: 
+          if not ran or not ran.photo: 
              await as_ai.edit("**Please reply to a photo to anime**")
              return 
+          photo_id = ran.photo.file_id
           delete_as_photo = await c.send_photo(bot, photo=photo_id)
           await asyncio.sleep(15)
           async for randydev in c.search_messages(bot, limit=1):
