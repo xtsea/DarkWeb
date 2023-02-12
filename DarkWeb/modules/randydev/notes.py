@@ -30,7 +30,7 @@ async def add_note_handler(c: Client, m: Message):
     else:
         await m.edit("Invalid syntax. Use /addnote keyword text")
 
-@ren.on_message(filters.command("getnote", ['.']) & filters.me)
+@ren.on_message(filters.command("getnote", cmd) & filters.me)
 async def get_note_handler(c: Client, m: Message):
     text = m.text.split(' ', 1)
     if len(text) == 2:
