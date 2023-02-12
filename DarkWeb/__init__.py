@@ -55,6 +55,7 @@ logging.getLogger("pyrogram.session.session").setLevel(logging.CRITICAL)
 
 LOGS = logging.getLogger(__name__)
 
+
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
 
@@ -68,6 +69,25 @@ def get_translation(transKey, params: list = None):
     ret = ret.replace('½', '%')
 
     return ret
+
+class PyroClient(Client):
+    @staticmethod
+    def store_msg(_, message):
+        try:
+            chat = message.chat
+            if chat.id in CONVERSATION:
+                CONVERSATION[chat.id].append(message)
+            elif chat.username and chat.username in CONVERSATION:
+                CONVERSATION[chat.username].append(message)
+        except BaseException:
+            pass
+        message.continue_propagation()
+
+    def __init__(self, session, **args):
+        super().__init__(session, **args)
+        self.add_handler(MessageHandler(PyroClient.store_msg, filters.incoming))
+
+
 
 
 if API_ID:
