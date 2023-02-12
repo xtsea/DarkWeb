@@ -76,6 +76,9 @@ async def photo_as_sticker(c: Client, m: Message):
                  await delete_as_photo.delete()
                  await randydev.delete()
                  os.remove(downloader_as_photo)
+              else:
+                  await pro.edit("**ERROR ANIME**")
+          await c.delete_messages(bot, 3)
 
     except BaseException:
         pass
