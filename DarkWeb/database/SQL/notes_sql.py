@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from DarkWeb.database.SQL import BASE, SESSION
+from DarkWeb.database.SQL import BASE
 from config import DB_URL
 
 class Note(BASE):
@@ -16,17 +16,17 @@ class Note(BASE):
         self.keyword = keyword
         self.text = text
 
+engine = create_engine(DB_URL)
 Session = sessionmaker(bind=engine)
-SESSION = Session()
 
 def add_note(chat_id, keyword, text):
-    with SESSION as session:
+    with Session() as session:
         new_note = Note(chat_id, keyword, text)
         session.add(new_note)
         session.commit()
 
 def get_note_text(chat_id, keyword):
-    with SESSION as session:
+    with Session() as session:
         note = session.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
         if note:
             return note.text
@@ -34,7 +34,7 @@ def get_note_text(chat_id, keyword):
             return None
 
 def delete_note(chat_id, keyword):
-    with SESSION as session:
+    with Session() as session:
         note = session.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
         if note:
             session.delete(note)
