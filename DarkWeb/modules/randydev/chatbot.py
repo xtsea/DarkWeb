@@ -17,7 +17,7 @@ from DarkWeb.helper.what import *
 from pykillerx.help import *
 from config import OPENAI_API
 
-from DarkWeb.utils.core import get_translation,
+from DarkWeb.utils.core import get_translation
 
 try:
     import openai
