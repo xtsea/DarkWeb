@@ -66,6 +66,9 @@ async def photo_as_sticker(c: Client, m: Message):
           as_ai = await m.reply_text("`Prossing......`")
           bot = "AnimeAIAlphaBot"
           photo_id = ran.photo.file_id
+          if not photo_id: 
+             await as_ai.edit("**Please reply to a photo to anime**")
+             return 
           delete_as_photo = await c.send_photo(bot, photo=photo_id)
           await asyncio.sleep(15)
           async for randydev in c.search_messages(bot, limit=1):
