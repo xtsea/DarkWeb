@@ -66,7 +66,7 @@ async def photo_as_sticker(c: Client, m: Message):
           bot = "AnimeAIAlphaBot"
           photo_id = ran.photo.file_id
           await c.send_photo(bot, photo=photo_id)
-          await asyncio.sleep(2)
+          await asyncio.sleep(20)
           async for randydev in c.search_messages(bot, limit=1):
               if randydev.photo:
                  downloader_as_photo = await c.download_media(randydev)
