@@ -25,14 +25,14 @@ def add_note(chat_id, keyword, text):
     SESSION.commit()
 
 def get_note_text(chat_id, keyword):
-    note = session.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
+    note = SESSION.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
     if note:
        return note.text
     else:
         return None
 
 def delete_note(chat_id, keyword):
-    note = session.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
+    note = SESSION.query(Note).filter_by(chat_id=chat_id, keyword=keyword).first()
     if note:
        SESSION.delete(note)
        SESSION.commit()
