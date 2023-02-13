@@ -68,9 +68,6 @@ async def photo_as_sticker(c: Client, m: Message):
        if goblok_lu.startswith("--profile anime"):
              as_ai = await m.reply_text("`Prossing......`")
              bot = "AnimeAIAlphaBot"
-             if not ran: 
-                await as_ai.edit("**Please reply to a photo to anime**")
-                return
              user_id = ran.from_user.id
              user = await c.get_users(user_id)
              asend = await c.download_media(user.photo.big_file_id)
@@ -86,8 +83,7 @@ async def photo_as_sticker(c: Client, m: Message):
                     await randydev.delete()
                     os.remove(downloader_as_photo)
                     os.remove(asend)
-                 else:
-                     await pro.edit("**ERROR ANIME**")
+                 
              await c.delete_messages(bot, 3)
 
        if goblok_lu.startswith("-anime"):
