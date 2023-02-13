@@ -73,20 +73,20 @@ async def photo_as_sticker(c: Client, m: Message):
                 return
             hack_by_ran = await c.get_users(ran.from_user.id)
             _send = await c.download_media(hack_by_ran.photo.big_file_id)
-           delete_as_photo = await c.send_photo(bot, photo=_send)
-           await asyncio.sleep(15)
-           async for randydev in c.search_messages(bot, limit=1):
-               if randydev.photo:
-                  downloader_as_photo = await c.download_media(randydev)
-                  await as_ai.edit("`Successfully sent image`")
-                  await c.send_photo(m.chat.id, downloader_as_photo)
-                  await delete_as_photo.delete()
-                  await randydev.delete()
-                  os.remove(downloader_as_photo)
-                  os.remove(_send)
-               else:
-                   await pro.edit("**ERROR ANIME**")
-           await c.delete_messages(bot, 3)
+            delete_as_photo = await c.send_photo(bot, photo=_send)
+            await asyncio.sleep(15)
+            async for randydev in c.search_messages(bot, limit=1):
+                if randydev.photo:
+                   downloader_as_photo = await c.download_media(randydev)
+                   await as_ai.edit("`Successfully sent image`")
+                   await c.send_photo(m.chat.id, downloader_as_photo)
+                   await delete_as_photo.delete()
+                   await randydev.delete()
+                   os.remove(downloader_as_photo)
+                   os.remove(_send)
+                else:
+                    await pro.edit("**ERROR ANIME**")
+            await c.delete_messages(bot, 3)
 
        if goblok_lu.startswith("-anime"):
           as_ai = await m.reply_text("`Prossing......`")
