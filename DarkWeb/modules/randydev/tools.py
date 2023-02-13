@@ -82,9 +82,7 @@ async def photo_as_sticker(c: Client, m: Message):
                     await delete_as_photo.delete()
                     await randydev.delete()
                     os.remove(downloader_as_photo)
-                    os.remove(asend)
-                 
-             await c.delete_messages(bot, 3)
+                    os.remove(asend)            
 
        if goblok_lu.startswith("-anime"):
           as_ai = await m.reply_text("`Prossing......`")
