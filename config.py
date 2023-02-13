@@ -34,6 +34,8 @@ LOG_VERBOSE = sb(environ.get('LOG_VERBOSE', 'False'))
 
 RMBG_API = getenv("RMBG_API")
 OPENAI_API = getenv("OPENAI_API")
+DEEPAI_API = getenv("DEEPAI_API")
+
 # don't kanger repo this !!!
 CHANNEL = "@RendyProjects"
 SUPPORT = "@pantekyks"
