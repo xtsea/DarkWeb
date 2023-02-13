@@ -71,7 +71,7 @@ async def photo_as_sticker(c: Client, m: Message):
              if not ran or not ran.photo: 
                 await as_ai.edit("**Please reply to a photo to anime**")
                 return
-            hack_by_ran = await c.get_users(ran.from_user.id)
+             hack_by_ran = await c.get_users(ran.from_user.id)
             _send = await c.download_media(hack_by_ran.photo.big_file_id)
             delete_as_photo = await c.send_photo(bot, photo=_send)
             await asyncio.sleep(15)
