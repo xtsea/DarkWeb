@@ -30,6 +30,7 @@ from pykillerx import *
 from pykillerx.helper import *
 from pykillerx.helper.basic import *
 from pykillerx.help import *
+from config import DEEPAI_API
 
 
 @ren.on_message(filters.command("facedetect", cmd) & filters.me)
@@ -94,7 +95,7 @@ async def toonify_handler(c: Client, m: Message):
         response = requests.post(
             "https://api.deepai.org/api/toonify",
             files={'image': f},
-            headers={'api-key': '4871e0ba-3bb6-40d8-b600-f415877c7606'} # DON'T THIS STEAL
+            headers={'api-key': DEEPAI_API}
         )
     result = response.json()
     if 'output_url' in result:
