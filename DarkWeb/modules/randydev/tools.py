@@ -68,7 +68,7 @@ async def photo_as_sticker(c: Client, m: Message):
        if goblok_lu.startswith("--profile anime"):
              as_ai = await m.reply_text("`Prossing......`")
              bot = "AnimeAIAlphaBot"
-             if not ran or not ran.photo: 
+             if not ran: 
                 await as_ai.edit("**Please reply to a photo to anime**")
                 return
              user_id = ran.from_user.id
