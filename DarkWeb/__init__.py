@@ -21,7 +21,6 @@ import time
 from aiohttp import ClientSession
 from pytgcalls import GroupCallFactory
 from config import *
-import DarkWeb.translator as _tr
 
 StartTime = time.time()
 START_TIME = dt.now()
