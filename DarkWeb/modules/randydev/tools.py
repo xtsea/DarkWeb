@@ -85,8 +85,8 @@ async def photo_as_sticker(c: Client, m: Message):
           # copyright by https://t.me/xtsea
           # credits : https://t.me/xtsea
           if goblok_lu.startswith("--profil anime"):
-          as_ai = await m.reply_text("`Prossing......`")
-          bot = "AnimeAIAlphaBot"
+             as_ai = await m.reply_text("`Prossing......`")
+             bot = "AnimeAIAlphaBot"
           if not ran or not ran.photo: 
              await as_ai.edit("**Please reply to a photo to anime**")
              return
