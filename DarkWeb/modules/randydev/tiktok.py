@@ -21,15 +21,13 @@ from pykillerx.help import *
 
 @ren.on_message(filters.command("ptok", cmd) & filters.me)
 async def tiktok(client: Client, message: Message):
-    lol = await message.reply_text("**Prossing......**")
-    link = get_arg(message)
+    link = message.text.split(" ", 1)[0]
     url = requests.get(f"https://api.douyin.wtf/api?url={link}").json()
-    if link:
-        try:
-           prik = url["nwm_video_url"]
-           await client.send_video(message.chat.id, prik)
-        except Exception as e:
-            return await lol.edit(f"**ERROR** `{e}`")
+    if "video_url" in url:
+       video_url = url["video_url"]
+       await client.send_video(message.chat.id, video_url)
+    else:
+        await message.edit("Unable to get video URL.")
 
 @ren.on_message(filters.command("tvideo", cmd) & filters.me)
 async def tvideo(client: Client, message: Message):
