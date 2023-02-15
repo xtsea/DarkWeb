@@ -23,8 +23,8 @@ from pykillerx.help import *
 async def tiktok(client: Client, message: Message):
     link = message.text.split(" ", 1)[0]
     url = requests.get(f"https://api.douyin.wtf/api?url={link}").json()
-    if "video_url" in url:
-       video_url = url["video_url"]
+    if "nwm_video_url" in url:
+       video_url = url["nwm_video_url"]
        await client.send_video(message.chat.id, video_url)
     else:
         await message.edit("Unable to get video URL.")
