@@ -21,7 +21,7 @@ from pykillerx.help import *
 
 @ren.on_message(filters.command("ptok", cmd) & filters.me)
 async def tiktok(client: Client, message: Message):
-    link = message.text.split(" ", 1)[0]
+    link = message.text.split(" ", 1)[1]
     url = requests.get(f"https://api.douyin.wtf/api?url={link}").json()
     if "nwm_video_url" in url:
        video_url = url["nwm_video_url"]
