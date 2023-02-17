@@ -2,6 +2,7 @@
 # please do not remove credits 
 # copyright https://github.com/TeamKillerX
 
+"""
 from pyrogram import *
 from pyrogram import Client
 from pyrogram.types import *
@@ -31,3 +32,4 @@ So if you don't wish to self-host, @MissRose_bot might be a better choice for
         )
     except Exception:
         pass
+"""
