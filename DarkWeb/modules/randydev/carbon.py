@@ -15,9 +15,8 @@ from pykillerx.helper.basic import *
 from pykillerx.helper.hacking import *
 from pykillerx.helper import *
 from pykillerx.help import *
+from pykillerx.carbon import *
 
-
-from pykillerx.carbon import make_carbon
 @ren.on_message(filters.command("carbon", cmd) & filters.me)
 async def carbon_func(client: Client, message: Message):
     text = (
