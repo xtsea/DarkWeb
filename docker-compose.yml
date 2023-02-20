@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  darkweb:
+      build:
+        context: https://github.com/TeamKillerX/DarkWeb.git#DarkWeb
+      restart: on-failure
+      env_file:
+        - config.env
