@@ -32,7 +32,7 @@ from pykillerx.blacklist import *
 from pykillerx.help import *
 from pykillerx.helper.hacking import *
 
-from pykillerx.carbon import make_carbon
+from DarkWeb.modules.randydev.carbon import make_carbon
 
 from pyrogram.raw import *
 from pyrogram.raw.types import *
