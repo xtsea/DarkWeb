@@ -8,6 +8,11 @@
 
 ![IMG_20230119_011431_335](https://user-images.githubusercontent.com/90479255/213261795-2719a53b-cda1-4fc2-b358-6436d747c172.jpg)
 
+[![pykillerx - Version](https://img.shields.io/pypi/v/pykillerx?style=round)](https://pypi.org/project/pykillerx)    
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/pykillerx?label=DOWNLOADS&style=round)](https://pypi.org/project/pykillerx)    
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/TeamKillerX/pykillerx/graphs/commit-activity)
+[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/TeamKillerX/pykillerx)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 ![Python Version](https://img.shields.io/badge/python-3.9-green?style=for-the-badge&logo=appveyor)
 ![Issues](https://img.shields.io/github/issues/TeamKillerX/DarkWeb?style=for-the-badge&logo=appveyor)
 ![Forks](https://img.shields.io/github/forks/TeamKillerX/DarkWeb?style=for-the-badge&logo=appveyor)
@@ -17,6 +22,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/rendyprojects/python)](https://hub.docker.com/r/rendyprojects/python/tags)
 [![DeepSource](https://static.deepsource.io/deepsource-badge-light-mini.svg)](https://deepsource.io/gh/TeamKillerX/DarkWeb/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/TeamKillerX/DarkWeb.svg/?label=active+issues&show_trend=true&token=jw0lCUg_Q5nRQMmfbhyjMLzr)](https://deepsource.io/gh/TeamKillerX/DarkWeb/?ref=repository-badge)
+
 ## Disclaimer
 ```
 ️                       ⚠️ WARNING FOR YOU ️ ️⚠️
@@ -90,7 +96,7 @@ Rendy@Ubuntu~ $ heroku ps:stop example # stop bot dyno
 
 ## Installling
 ```
-pip3 install pykillerx
+pip3 install --upgrade pykillerx
 ```
 
 # License
