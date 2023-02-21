@@ -1,4 +1,6 @@
 import asyncio
+import json
+import requests
 from io import BytesIO
 
 from pyrogram import *
