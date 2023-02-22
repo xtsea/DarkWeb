@@ -55,8 +55,18 @@ async def openai(c, m):
 
 @ren.on_message(filters.command("img", cmd) & filters.me)
 async def chatgpt_image(c: Client, m: Message):
+    randydev = (
+        m.text.split(None, 1)[1]
+        if len(
+            m.command,
+        )
+        != 1
+        else None
+    )
+    if not randydev:
+       await m.reply(f"use command <code>.{m.command[0]}</code> to image random using the API.")
+       return
     try:
-        randydev = m.text.split(" " 1)[1]
         chatgpt_bot = "KillerXChatBot"
         command = "/img"
         await c.send_message(chatgpt_bot, f"{command} {randydev}")
@@ -67,8 +77,7 @@ async def chatgpt_image(c: Client, m: Message):
                await c.send_photo(m.chat.id, photo=dwd)
                os.remove(dwd)
             else:
-                 await c.send_message(m.chat.id, "ERROR FUCKING")
-                 
+                 await c.send_message(m.chat.id, "ERROR FUCKING")                 
     except Exception:
         pass
 
