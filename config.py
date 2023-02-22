@@ -40,7 +40,7 @@ DEEPAI_API = getenv("DEEPAI_API")
 CHANNEL = "@RendyProjects"
 SUPPORT = "@pantekyks"
 
-BOT_VER = "0.3.5@dev"
+BOT_VER = "0.3.7@dev"
 BRANCH = getenv("BRANCH", "DarkWeb") #don't change
  
 STRING_SESSION1 = getenv("STRING_SESSION1", "")
