@@ -90,7 +90,10 @@ async def report_admin(client: Client, message: Message):
     async for a in client.get_chat_members(
         message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS
     ):
-        if a.status in (enums.ChatMemberStatus.ADMINISTRATOR, enums.ChatMemberStatus.OWNER):
+        if (
+            a.status == enums.ChatMemberStatus.ADMINISTRATOR
+            or a.status == enums.ChatMemberStatus.OWNER
+        ):
             if not a.user.is_bot:
                 admin.append(mention_html(a.user.id, "\u200b"))
     if message.reply_to_message:
@@ -177,7 +180,6 @@ async def get_list_bots(client: Client, message: Message):
         await client.send_message(message.chat.id, teks, reply_to_message_id=replyid)
     else:
         await message.edit(teks)
-
 
 add_command_help(
     "tools",
