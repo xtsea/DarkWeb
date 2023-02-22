@@ -25,6 +25,7 @@ from pykillerx.helper import *
 from pykillerx.helper.inline import *
 from pykillerx.help import *
 from pykillerx import *
+from config import BOT_VER
 
 async def get_readable_time(seconds: int) -> str:
     count = 0
@@ -62,7 +63,7 @@ async def alive_function(message: Message, answers):
 <b> • Pyrogram Version :</b> <code>{pyrover}</code>
 <b> • Bot Uptime :</b> <code>{uptime}</code>
 
-<b> — Bot version: 2.0</b>
+<b> — Bot version: {BOT_VER}</b>
 """
     answers.append(
         InlineQueryResultArticle(
