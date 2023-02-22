@@ -61,7 +61,7 @@ async def chatgpt_image(c: Client, m: Message):
         command = "/img"
         await c.send_message(chatgpt_bot, f"{command} {randydev}")
         await asyncio.sleep(20)
-        async for xnxx in c.search_messages(chatgpt, limit=1):
+        async for xnxx in c.search_messages(chatgpt_bot, limit=1):
             if xnxx.photo:
                dwd = await c.download_media(xnxx)
                await c.send_photo(m.chat.id, photo=dwd)
