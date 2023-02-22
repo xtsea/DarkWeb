@@ -94,6 +94,17 @@ Rendy@Ubuntu~ $ heroku logs --tail # If for some reason it’s not working, chec
 Rendy@Ubuntu~ $ heroku ps:stop example # stop bot dyno
 ```
 
+### Docker Compose Linux
+![Screenshot_20230222-132304_Termius](https://user-images.githubusercontent.com/90479255/220734836-44ee0145-f0ff-4ad9-a160-253b9b96c270.jpg)
+```console
+Rendy@Ubuntu~ $ git clone https://github.com/TeamKillerX/DarkWeb
+Rendy@Ubuntu~ $ cd DarkWeb
+Rendy@Ubuntu~ $ nano config.env
+Rendy@Ubuntu~ $ docker-compose build 
+Rendy@Ubuntu~ $ docker-compose up -d
+Rendy@Ubuntu~ $ docker-compose logs darkweb
+```
+
 ## Installling
 ```
 pip3 install --upgrade pykillerx
