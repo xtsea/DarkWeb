@@ -6,6 +6,7 @@ import requests
 import os
 import json
 import random
+import asyncio
 from pyrogram import *
 from pyrogram.types import *
 from pyrogram import Client as ren 
@@ -50,6 +51,27 @@ async def openai(c, m):
         await msg.edit("Yahh, sorry i can't get your answer.")
 
 # Credits by @xtsea
+# free plugins
+
+@ren.on_message(filters.command("img", cmd) & filters.me)
+async def chatgpt_image(c: Client, m: Message):
+    try:
+        randydev = m.text.split(" " 1)[1]
+        chatgpt_bot = "KillerXChatBot"
+        command = "/img"
+        await c.send_message(chatgpt_bot, f"{command} {randydev}")
+        await asyncio.sleep(20)
+        async for xnxx in c.search_messages(chatgpt, limit=1):
+            if xnxx.photo:
+               dwd = await c.download_media(xnxx)
+               await c.send_photo(m.chat.id, photo=dwd)
+               os.remove(dwd)
+            else:
+                 await c.send_message(m.chat.id, "ERROR FUCKING")
+                 
+    except Exception:
+        pass
+
 
 add_command_help(
     "chatgpt",
