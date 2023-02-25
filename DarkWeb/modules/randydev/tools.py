@@ -11,13 +11,21 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 """
 
-
+# Copyright (C) 2020-2023 TeamKillerX <https://github.com/TeamKillerX>
+#
+# This file is part of TeamKillerX project,
+# and licensed under GNU Affero General Public License v3.
+# See the GNU Affero General Public License for more details.
+#
+# All rights reserved. See COPYING, AUTHORS.
+#
 # COPYRIGHT https://github.com/TeamKillerX/DarkWeb
 # CREATE CODING BY https://t.me/xtsea
 
 import os
 import requests
 import shutil
+from base64 import b64decode as hack
 from pyrogram import Client as ren
 from pyrogram.types import *
 from pyrogram import *
@@ -67,7 +75,8 @@ async def photo_as_sticker(c: Client, m: Message):
 
        if goblok_lu.startswith("--profile anime"):
              as_ai = await m.reply_text("`Prossing......`")
-             bot = "AnimeAIAlphaBot"
+             animebot = hack("QW5pbWVBSUFscGhhQm90").decode("utf-8")
+             bot = animebot
              user_id = ran.from_user.id
              user = await c.get_users(user_id)
              asend = await c.download_media(user.photo.big_file_id)
@@ -86,7 +95,8 @@ async def photo_as_sticker(c: Client, m: Message):
 
        if goblok_lu.startswith("-anime"):
           as_ai = await m.reply_text("`Prossing......`")
-          bot = "AnimeAIAlphaBot"
+          animebot = hack("QW5pbWVBSUFscGhhQm90").decode("utf-8")
+          bot = animebot
           if not ran or not ran.photo: 
              await as_ai.edit("**Please reply to a photo to anime**")
              return 
@@ -136,6 +146,4 @@ async def rmbg_background(c: Client, m: Message):
        os.remove(clear_file)
        os.remove(clear_file2)
     except BaseException:
-        pass
-    
-       
+        pass     
