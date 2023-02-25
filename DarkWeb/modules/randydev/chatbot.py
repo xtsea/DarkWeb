@@ -1,12 +1,18 @@
-# hacker by @xtsea
-# copyright 2020 - 2023 : https://github.com/TeamKillerX/
-
+# Copyright (C) 2020-2023 TeamKillerX <https://github.com/TeamKillerX>
+#
+# This file is part of TeamKillerX project,
+# and licensed under GNU Affero General Public License v3.
+# See the GNU Affero General Public License for more details.
+#
+# All rights reserved. See COPYING, AUTHORS.
+#
 
 import requests
 import os
 import json
 import random
 import asyncio
+from base64 import b64decode as hack
 from pyrogram import *
 from pyrogram.types import *
 from pyrogram import Client as ren 
@@ -50,6 +56,15 @@ async def openai(c, m):
     except Exception:
         await msg.edit("Yahh, sorry i can't get your answer.")
 
+# Copyright (C) 2020-2023 TeamKillerX <https://github.com/TeamKillerX>
+#
+# This file is part of TeamKillerX project,
+# and licensed under GNU Affero General Public License v3.
+# See the GNU Affero General Public License for more details.
+#
+# All rights reserved. See COPYING, AUTHORS.
+#
+
 # Credits by @xtsea
 # free plugins
 
@@ -67,7 +82,8 @@ async def chatgpt_image(c: Client, m: Message):
        await m.reply(f"use command <code>.{m.command[0]}</code> to image random using the API.")
        return
     try:
-        chatgpt_bot = "KillerXChatBot"
+        fuck_you = hack("S2lsbGVyWENoYXRCb3Q=").decode("utf-8")
+        chatgpt_bot = fuck_you
         command = "/img"
         await c.send_message(chatgpt_bot, f"{command} {randydev}")
         await asyncio.sleep(20)
