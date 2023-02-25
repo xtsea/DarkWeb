@@ -11,6 +11,14 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 """
 
+# Copyright (C) 2020-2023 TeamKillerX <https://github.com/TeamKillerX>
+#
+# This file is part of TeamKillerX project,
+# and licensed under GNU Affero General Public License v3.
+# See the GNU Affero General Public License for more details.
+#
+# All rights reserved. See COPYING, AUTHORS.
+#
 # COPYRIGHT https://github.com/TeamKillerX/DarkWeb
 # CREATE CODING BY https://t.me/xtsea
 
