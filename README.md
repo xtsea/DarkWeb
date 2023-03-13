@@ -30,7 +30,7 @@
 
 ## Code Source
 <b>this repo is available</b>
-• https://github.com/TeamKillerX/TigerX-Userbot
+* https://github.com/TeamKillerX/TigerX-Userbot
 
 # License
 
